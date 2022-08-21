@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23b4604d-330c-40e1-b865-14d4895848b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/dao/DaoInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/model/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/model/Reminder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/model/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/utility/MyConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../draft2.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/../../draft2.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../draft2.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/../../draft2.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/pt_tugasakhir_agenda/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/pt_tugasakhir_agenda/hello-view.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="23b4604d-330c-40e1-b865-14d4895848b6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +24,14 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2DWQeZdPugxSEjqBZHIOZarOMk5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -54,9 +44,30 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Juan Sterling/Documents/Kuliah/Sem Antara/PBO2/PT06_2072009"
+    "last_opened_file_path": "C:/Users/ASUS/Documents/SA 2/Pemrograman Terapan/PT_TugasAkhir_Agenda",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.pt_tugasakhir_agenda.MainApplication" />
+      <module name="PT_TugasAkhir_Agenda" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pt_tugasakhir_agenda.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -67,6 +78,7 @@
       <updated>1660812460053</updated>
       <workItem from="1660812462233" duration="9000" />
       <workItem from="1661069751164" duration="1553000" />
+      <workItem from="1661071528981" duration="126000" />
     </task>
     <servers />
   </component>

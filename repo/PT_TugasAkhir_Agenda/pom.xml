@@ -71,7 +71,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.pt_tugasakhir_agenda/com.example.pt_tugasakhir_agenda.HelloApplication
+                                com.example.pt_tugasakhir_agenda/com.example.pt_tugasakhir_agenda.MainApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

@@ -1,4 +1,4 @@
-package com.example.pt_tugasakhir_agenda;
+package com.example.pt_tugasakhir_agenda.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

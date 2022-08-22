@@ -3,6 +3,7 @@ module com.example.pt_tugasakhir_agenda {
     requires javafx.fxml;
     requires java.sql;
     requires jasperreports;
+    requires com.calendarfx.view;
 
 
     opens com.example.pt_tugasakhir_agenda to javafx.fxml;

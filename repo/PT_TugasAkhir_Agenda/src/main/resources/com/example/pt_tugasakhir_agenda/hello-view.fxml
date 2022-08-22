@@ -2,15 +2,113 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.pt_tugasakhir_agenda.controller.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;">
+               <children>
+                  <Label text="Sun" textFill="WHITE" />
+               </children>
+            </TilePane>
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Mon" textFill="WHITE" />
+               </children>
+            </TilePane>
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="2">
+               <children>
+                  <Label text="Tue" textFill="WHITE" />
+               </children>
+            </TilePane>
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="3">
+               <children>
+                  <Label text="Wed" textFill="WHITE" />
+               </children>
+            </TilePane>
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="4">
+               <children>
+                  <Label text="Thu" textFill="WHITE" />
+               </children>
+            </TilePane>
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="5">
+               <children>
+                  <Label text="Fri" textFill="WHITE" />
+               </children>
+            </TilePane>
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="6">
+               <children>
+                  <Label text="Sat" textFill="WHITE" />
+               </children>
+            </TilePane>
+         </children>
+      </GridPane>
+   </center>
+   <top>
+      <HBox prefHeight="42.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="*Month*">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="*Year*">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="358.0" prefWidth="240.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <TilePane alignment="CENTER" prefHeight="38.0" prefWidth="240.0" style="-fx-background-color: #614321;">
+               <children>
+                  <Label text="Add Event" textFill="WHITE" />
+               </children>
+            </TilePane>
+            <TilePane alignment="CENTER" prefHeight="38.0" prefWidth="240.0" style="-fx-background-color: #614321;">
+               <children>
+                  <Label text="Add Task" textFill="WHITE" />
+               </children>
+            </TilePane>
+            <TilePane alignment="CENTER" prefHeight="38.0" prefWidth="240.0" style="-fx-background-color: #614321;">
+               <children>
+                  <Label text="Add Reminder" textFill="WHITE" />
+               </children>
+            </TilePane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </left>
+</BorderPane>

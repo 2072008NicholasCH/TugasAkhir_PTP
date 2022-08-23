@@ -6,9 +6,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import java.time.LocalDate;
@@ -18,9 +21,18 @@ import java.util.Iterator;
 public class MainController {
 
     @FXML
+    private Label lbYear;
+    @FXML
+    private Label lbMonth;
+    @FXML
     private DatePicker date;
     @FXML
     private GridPane calendarView;
+    @FXML
+    private ToggleButton toggleButton;
+
+    @FXML
+    private Button btn;
 
     public void initialize() {
         // action event
@@ -30,6 +42,9 @@ public class MainController {
                 removeGridPane();
                 LocalDate today = date.getValue();
                 LocalDate startOfMonth = today.minusDays(today.getDayOfMonth() - 1);
+
+                lbMonth.setText(String.valueOf(date.getValue().getMonth()));
+                lbYear.setText(String.valueOf(date.getValue().getYear()));
 
                 int month = date.getValue().getMonthValue();
                 YearMonth yearMonthObject = YearMonth.of(2022, month);
@@ -50,7 +65,8 @@ public class MainController {
                         Label label = new Label(String.valueOf(i));
                         label.setPadding(new Insets(1));
                         label.setTextAlignment(TextAlignment.CENTER);
-                        GridPane.setHalignment(label, HPos.CENTER);
+                        GridPane.setHalignment(label, HPos.LEFT);
+                        GridPane.setValignment(label, VPos.TOP);
                         calendarView.add(label, col, row);
                         calendarView.setGridLinesVisible(true);
                         col++;
@@ -60,6 +76,12 @@ public class MainController {
             }
         };
         date.setOnAction(event);
+
+
+    }
+
+    public void addEvent() {
+        System.out.println("test");
     }
     public void removeGridPane() {
         ObservableList<Node> children = calendarView.getChildren();
@@ -71,5 +93,7 @@ public class MainController {
             }
         }
     }
+
+
 
 }

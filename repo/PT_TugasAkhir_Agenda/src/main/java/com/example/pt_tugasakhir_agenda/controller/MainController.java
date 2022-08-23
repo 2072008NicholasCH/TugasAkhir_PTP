@@ -1,5 +1,9 @@
 package com.example.pt_tugasakhir_agenda.controller;
 
+import com.calendarfx.view.CalendarView;
+import com.example.pt_tugasakhir_agenda.dao.EventDao;
+import com.example.pt_tugasakhir_agenda.model.Event;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,9 +18,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
+import net.sf.jasperreports.engine.export.Grid;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class MainController {
 
@@ -29,16 +39,25 @@ public class MainController {
     @FXML
     private GridPane calendarView;
     @FXML
-    private ToggleButton toggleButton;
-
+    private ToggleButton tbRemind;
     @FXML
-    private Button btn;
+    private ToggleButton tbTask;
+    @FXML
+    private ToggleButton tbEvent;
+    private EventDao eDao;
+    private ObservableList<Event> eList;
 
     public void initialize() {
+        eDao = new EventDao();
         // action event
+        tbRemind.setDisable(true);
+        tbTask.setDisable(true);
+        tbEvent.setDisable(true);
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e)
             {
+                eList = eDao.getEventDate(date.getValue().getMonthValue());
+
                 removeGridPane();
                 LocalDate today = date.getValue();
                 LocalDate startOfMonth = today.minusDays(today.getDayOfMonth() - 1);
@@ -73,6 +92,33 @@ public class MainController {
                         i++;
                     }
                 }
+                GridPane calendarView2 = new GridPane();
+                for (Event event : eList) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    LocalDateTime dateTime = LocalDateTime.parse(event.getEventtimestart(), formatter);
+                    Iterator<Node> children = calendarView.getChildren().iterator();
+                    while (children.hasNext()) {
+                        Node node = children.next();
+                        if (node instanceof Label) {
+                            Label label = (Label) node;
+                            if (label.getText().equals(String.valueOf(dateTime.getDayOfMonth()))) {
+                                children.remove();
+                                int rows = GridPane.getRowIndex(node);
+                                int cols = GridPane.getColumnIndex(node);
+                                Label eventName = new Label(dateTime.getDayOfMonth() + "\n " + event.getEventname());
+//                                eventName.setTextAlignment(TextAlignment.CENTER);
+                                GridPane.setHalignment(eventName, HPos.LEFT);
+                                GridPane.setValignment(eventName, VPos.TOP);
+                                calendarView2.add(eventName ,cols,rows);
+                                System.out.println(label.getText());
+                            }
+                        }
+                    }
+                }
+                calendarView.getChildren().addAll(calendarView2.getChildren());
+                tbRemind.setDisable(false);
+                tbTask.setDisable(false);
+                tbEvent.setDisable(false);
             }
         };
         date.setOnAction(event);
@@ -83,6 +129,15 @@ public class MainController {
     public void addEvent() {
         System.out.println("test");
     }
+
+    public void addReminder(){
+        System.out.println("itil");
+    }
+
+    public void addTask(){
+        System.out.println("Alek Jancok");
+    }
+
     public void removeGridPane() {
         ObservableList<Node> children = calendarView.getChildren();
         Iterator<Node> iter = children.iterator();

@@ -79,21 +79,16 @@ public class MainController {
                 row += 1;
             } else {
                 if (today.getDayOfMonth() == i) {
-                    TilePane tPane = new TilePane();
-                    tPane.setStyle("-fx-background-color: #FFFF00; -fx-border-color: #000");
                     Label label = new Label(String.valueOf(i));
-                    tPane.getChildren().add(label);
-                    GridPane.setHalignment(tPane, HPos.LEFT);
-                    GridPane.setValignment(tPane, VPos.TOP);
-                    calendarView.add(tPane ,col,row);
+                    label.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
+                    GridPane.setHalignment(label, HPos.LEFT);
+                    GridPane.setValignment(label, VPos.TOP);
+                    calendarView.add(label ,col,row);
                 } else {
                     Label label = new Label(String.valueOf(i));
-                    label.setPadding(new Insets(1));
-                    label.setTextAlignment(TextAlignment.CENTER);
                     GridPane.setHalignment(label, HPos.LEFT);
                     GridPane.setValignment(label, VPos.TOP);
                     calendarView.add(label, col, row);
-                    calendarView.setGridLinesVisible(true);
                 }
                 col++;
                 i++;
@@ -114,6 +109,9 @@ public class MainController {
                         int cols = GridPane.getColumnIndex(node);
                         VBox vBox = new VBox();
                         Label eventName = new Label(String.valueOf(dateTime.getDayOfMonth()));
+                        if (label.getText().equals(String.valueOf(today.getDayOfMonth()))) {
+                            eventName.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
+                        }
                         Button btn = new Button();
                         btn.setStyle("-fx-background-color: #00FF00; -fx-cursor: hand");
                         btn.setText(event.getEventname());
@@ -126,24 +124,6 @@ public class MainController {
                         GridPane.setValignment(eventName, VPos.TOP);
                         calendarView2.add(vBox,cols,rows);
                     }
-                } else if (node.getStyle().equals("-fx-background-color: #FFFF00; -fx-border-color: #000")) {
-                    TilePane tpNode = (TilePane) node;
-                    Label label = (Label) tpNode.getChildren().get(0);
-                    children.remove();
-                    int rows = GridPane.getRowIndex(node);
-                    int cols = GridPane.getColumnIndex(node);
-                    TilePane tPane = new TilePane();
-                    tPane.setStyle("-fx-background-color: #FFFF00; -fx-border-color: #000");
-                    Label eventName = new Label();
-                    if (label.getText().equals(String.valueOf(dateTime.getDayOfMonth()))) {
-                        eventName.setText(label.getText() + "\n " + event.getEventname());
-                    } else {
-                        eventName.setText(label.getText());
-                    }
-                    tPane.getChildren().add(eventName);
-                    GridPane.setHalignment(eventName, HPos.LEFT);
-                    GridPane.setValignment(eventName, VPos.TOP);
-                    calendarView2.add(tPane ,cols,rows);
                 }
             }
             calendarView.getChildren().addAll(calendarView2.getChildren());
@@ -151,10 +131,13 @@ public class MainController {
     }
     public void getData(Button btn) {
         Event test = eDao.getEventDetails(Integer.parseInt(btn.getId()));
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.OK, ButtonType.CANCEL);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.OK);
         String eventName = test.getEventname();
-        String details = "";
+        String details = test.getEventtimestart() + " - " + test.getEventtimestop() + "\n" +
+                "Category: " + test.getIdcategory().getCategoryname();
+        alert.setTitle("Event Details");
         alert.setHeaderText(eventName);
+        alert.setContentText(details);
         alert.showAndWait();
         System.out.println(test.getEventname());
     }
@@ -176,8 +159,6 @@ public class MainController {
         while (iter.hasNext()) {
             Node node = iter.next();
             if (node instanceof Label) {
-                iter.remove();
-            } else if (node.getStyle().equals("-fx-background-color: #FFFF00; -fx-border-color: #000")) {
                 iter.remove();
             } else if (node instanceof VBox) {
                 iter.remove();

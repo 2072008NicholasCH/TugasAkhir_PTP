@@ -1,9 +1,7 @@
 package com.example.pt_tugasakhir_agenda.controller;
 
-import com.calendarfx.view.CalendarView;
 import com.example.pt_tugasakhir_agenda.dao.EventDao;
 import com.example.pt_tugasakhir_agenda.model.Event;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,21 +10,15 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
-import net.sf.jasperreports.engine.export.Grid;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class MainController {
 
@@ -49,83 +41,123 @@ public class MainController {
 
     public void initialize() {
         eDao = new EventDao();
-        // action event
-        tbRemind.setDisable(true);
-        tbTask.setDisable(true);
-        tbEvent.setDisable(true);
+        LocalDate now = LocalDate.now();
+        date.setValue(now);
+        changeDate();
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e)
-            {
-                eList = eDao.getEventDate(date.getValue().getMonthValue());
-
-                removeGridPane();
-                LocalDate today = date.getValue();
-                LocalDate startOfMonth = today.minusDays(today.getDayOfMonth() - 1);
-
-                lbMonth.setText(String.valueOf(date.getValue().getMonth()));
-                lbYear.setText(String.valueOf(date.getValue().getYear()));
-
-                int month = date.getValue().getMonthValue();
-                YearMonth yearMonthObject = YearMonth.of(2022, month);
-                int daysInMonth = yearMonthObject.lengthOfMonth(); //28
-                int i = 1;
-                int row = 1;
-                int col;
-                if (startOfMonth.getDayOfWeek().getValue() == 7) {
-                    col = 0;
-                } else {
-                    col = startOfMonth.getDayOfWeek().getValue();
-                }
-                while (i <= daysInMonth) {
-                    if (col > 6) {
-                        col = 0;
-                        row += 1;
-                    } else {
-                        Label label = new Label(String.valueOf(i));
-                        label.setPadding(new Insets(1));
-                        label.setTextAlignment(TextAlignment.CENTER);
-                        GridPane.setHalignment(label, HPos.LEFT);
-                        GridPane.setValignment(label, VPos.TOP);
-                        calendarView.add(label, col, row);
-                        calendarView.setGridLinesVisible(true);
-                        col++;
-                        i++;
-                    }
-                }
-                GridPane calendarView2 = new GridPane();
-                for (Event event : eList) {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                    LocalDateTime dateTime = LocalDateTime.parse(event.getEventtimestart(), formatter);
-                    Iterator<Node> children = calendarView.getChildren().iterator();
-                    while (children.hasNext()) {
-                        Node node = children.next();
-                        if (node instanceof Label) {
-                            Label label = (Label) node;
-                            if (label.getText().equals(String.valueOf(dateTime.getDayOfMonth()))) {
-                                children.remove();
-                                int rows = GridPane.getRowIndex(node);
-                                int cols = GridPane.getColumnIndex(node);
-                                Label eventName = new Label(dateTime.getDayOfMonth() + "\n " + event.getEventname());
-//                                eventName.setTextAlignment(TextAlignment.CENTER);
-                                GridPane.setHalignment(eventName, HPos.LEFT);
-                                GridPane.setValignment(eventName, VPos.TOP);
-                                calendarView2.add(eventName ,cols,rows);
-                                System.out.println(label.getText());
-                            }
-                        }
-                    }
-                }
-                calendarView.getChildren().addAll(calendarView2.getChildren());
-                tbRemind.setDisable(false);
-                tbTask.setDisable(false);
-                tbEvent.setDisable(false);
+            public void handle(ActionEvent e) {
+                changeDate();
             }
         };
         date.setOnAction(event);
-
-
+        System.out.println(now);
     }
+    public void changeDate() {
+        eList = eDao.getEventDate(date.getValue().getMonthValue(), date.getValue().getYear());
 
+        removeGridPane();
+        LocalDate today = date.getValue();
+        LocalDate startOfMonth = today.minusDays(today.getDayOfMonth() - 1);
+
+        lbMonth.setText(String.valueOf(date.getValue().getMonth()));
+        lbYear.setText(String.valueOf(date.getValue().getYear()));
+
+        int month = date.getValue().getMonthValue();
+        YearMonth yearMonthObject = YearMonth.of(2022, month);
+        int daysInMonth = yearMonthObject.lengthOfMonth(); //28
+        int i = 1;
+        int row = 1;
+        int col;
+        if (startOfMonth.getDayOfWeek().getValue() == 7) {
+            col = 0;
+        } else {
+            col = startOfMonth.getDayOfWeek().getValue();
+        }
+        while (i <= daysInMonth) {
+            if (col > 6) {
+                col = 0;
+                row += 1;
+            } else {
+                if (today.getDayOfMonth() == i) {
+                    TilePane tPane = new TilePane();
+                    tPane.setStyle("-fx-background-color: #FFFF00; -fx-border-color: #000");
+                    Label label = new Label(String.valueOf(i));
+                    tPane.getChildren().add(label);
+                    GridPane.setHalignment(tPane, HPos.LEFT);
+                    GridPane.setValignment(tPane, VPos.TOP);
+                    calendarView.add(tPane ,col,row);
+                } else {
+                    Label label = new Label(String.valueOf(i));
+                    label.setPadding(new Insets(1));
+                    label.setTextAlignment(TextAlignment.CENTER);
+                    GridPane.setHalignment(label, HPos.LEFT);
+                    GridPane.setValignment(label, VPos.TOP);
+                    calendarView.add(label, col, row);
+                    calendarView.setGridLinesVisible(true);
+                }
+                col++;
+                i++;
+            }
+        }
+        GridPane calendarView2 = new GridPane();
+        for (Event event : eList) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime dateTime = LocalDateTime.parse(event.getEventtimestart(), formatter);
+            Iterator<Node> children = calendarView.getChildren().iterator();
+            while (children.hasNext()) {
+                Node node = children.next();
+                if (node instanceof Label) {
+                    Label label = (Label) node;
+                    if (label.getText().equals(String.valueOf(dateTime.getDayOfMonth()))) {
+                        children.remove();
+                        int rows = GridPane.getRowIndex(node);
+                        int cols = GridPane.getColumnIndex(node);
+                        VBox vBox = new VBox();
+                        Label eventName = new Label(String.valueOf(dateTime.getDayOfMonth()));
+                        Button btn = new Button();
+                        btn.setStyle("-fx-background-color: #00FF00; -fx-cursor: hand");
+                        btn.setText(event.getEventname());
+                        btn.setId(String.valueOf(event.getIdevent()));
+                        btn.setOnAction(test -> getData(btn));
+
+                        vBox.getChildren().add(eventName);
+                        vBox.getChildren().add(btn);
+                        GridPane.setHalignment(eventName, HPos.LEFT);
+                        GridPane.setValignment(eventName, VPos.TOP);
+                        calendarView2.add(vBox,cols,rows);
+                    }
+                } else if (node.getStyle().equals("-fx-background-color: #FFFF00; -fx-border-color: #000")) {
+                    TilePane tpNode = (TilePane) node;
+                    Label label = (Label) tpNode.getChildren().get(0);
+                    children.remove();
+                    int rows = GridPane.getRowIndex(node);
+                    int cols = GridPane.getColumnIndex(node);
+                    TilePane tPane = new TilePane();
+                    tPane.setStyle("-fx-background-color: #FFFF00; -fx-border-color: #000");
+                    Label eventName = new Label();
+                    if (label.getText().equals(String.valueOf(dateTime.getDayOfMonth()))) {
+                        eventName.setText(label.getText() + "\n " + event.getEventname());
+                    } else {
+                        eventName.setText(label.getText());
+                    }
+                    tPane.getChildren().add(eventName);
+                    GridPane.setHalignment(eventName, HPos.LEFT);
+                    GridPane.setValignment(eventName, VPos.TOP);
+                    calendarView2.add(tPane ,cols,rows);
+                }
+            }
+            calendarView.getChildren().addAll(calendarView2.getChildren());
+        }
+    }
+    public void getData(Button btn) {
+        Event test = eDao.getEventDetails(Integer.parseInt(btn.getId()));
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.OK, ButtonType.CANCEL);
+        String eventName = test.getEventname();
+        String details = "";
+        alert.setHeaderText(eventName);
+        alert.showAndWait();
+        System.out.println(test.getEventname());
+    }
     public void addEvent() {
         System.out.println("test");
     }
@@ -144,6 +176,10 @@ public class MainController {
         while (iter.hasNext()) {
             Node node = iter.next();
             if (node instanceof Label) {
+                iter.remove();
+            } else if (node.getStyle().equals("-fx-background-color: #FFFF00; -fx-border-color: #000")) {
+                iter.remove();
+            } else if (node instanceof VBox) {
                 iter.remove();
             }
         }

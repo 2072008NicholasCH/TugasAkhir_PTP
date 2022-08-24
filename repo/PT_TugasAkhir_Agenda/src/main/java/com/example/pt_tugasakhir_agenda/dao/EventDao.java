@@ -48,15 +48,47 @@ public class EventDao implements DaoInterface<Event> {
         }
         return eList;
     }
-    public ObservableList<Event> getEventDate(int month) {
+    public Event getEventDetails(int id) {
+        Connection conn = MyConnection.getConnection();
+        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE e.idEvent = ?";
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                int idEvent = result.getInt("idEvent");
+                String eventName = result.getString("eventName");
+                String eventStart = result.getString("eventTimeStart");
+                String eventEnd = result.getString("eventTimeStop");
+                int eventTrash = result.getInt("eventTrash");
+
+                int idCategory = result.getInt("Category_idCategory");
+                String categoryName = result.getString("categoryName");
+
+                String username = result.getString("userName");
+                String password = result.getString("userPassword");
+
+                Category c = new Category(idCategory, categoryName);
+                User u = new User(username, password);
+                Event e = new Event(idEvent, eventName, eventStart, eventEnd, eventTrash, c, u);
+                return e;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+    public ObservableList<Event> getEventDate(int month, int year) {
         ObservableList<Event> eList;
         eList = FXCollections.observableArrayList();
         Connection conn = MyConnection.getConnection();
-        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE MONTH(e.eventTimeStart) = ?";
+        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE MONTH(e.eventTimeStart) = ? AND YEAR(e.eventTimeStart) = ?";
         PreparedStatement ps;
         try {
             ps = conn.prepareStatement(query);
             ps.setInt(1, month);
+            ps.setInt(2, year);
             ResultSet result = ps.executeQuery();
             while (result.next()) {
                 int idEvent = result.getInt("idEvent");

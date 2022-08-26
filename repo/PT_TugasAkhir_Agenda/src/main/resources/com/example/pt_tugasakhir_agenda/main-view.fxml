@@ -38,39 +38,39 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;">
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4c076;">
                <children>
-                  <Label text="Sun" textFill="WHITE" />
+                  <Label text="Sun" />
                </children>
             </TilePane>
-            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="1">
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4c076;" GridPane.columnIndex="1">
                <children>
-                  <Label text="Mon" textFill="WHITE" />
+                  <Label text="Mon" />
                </children>
             </TilePane>
-            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="2">
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4c076;" GridPane.columnIndex="2">
                <children>
-                  <Label text="Tue" textFill="WHITE" />
+                  <Label text="Tue" />
                </children>
             </TilePane>
-            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="3">
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4c076;" GridPane.columnIndex="3">
                <children>
-                  <Label text="Wed" textFill="WHITE" />
+                  <Label text="Wed" />
                </children>
             </TilePane>
-            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="4">
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4c076;" GridPane.columnIndex="4">
                <children>
-                  <Label text="Thu" textFill="WHITE" />
+                  <Label text="Thu" />
                </children>
             </TilePane>
-            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="5">
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4c076;" GridPane.columnIndex="5">
                <children>
-                  <Label text="Fri" textFill="WHITE" />
+                  <Label text="Fri" />
                </children>
             </TilePane>
-            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #849f9a;" GridPane.columnIndex="6">
+            <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4c076;" GridPane.columnIndex="6">
                <children>
-                  <Label text="Sat" textFill="WHITE" />
+                  <Label text="Sat" />
                </children>
             </TilePane>
          </children>
@@ -82,23 +82,6 @@
          </padding>
       </GridPane>
    </center>
-   <left>
-      <VBox prefHeight="358.0" prefWidth="240.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <ToggleButton fx:id="tbEvent" mnemonicParsing="false" onMouseClicked="#addEvent" prefHeight="37.0" prefWidth="220.0" style="-fx-background-color: #614321; -fx-cursor: hand;" text="Add Event" textFill="WHITE" />
-            <ToggleButton fx:id="tbRemind" mnemonicParsing="false" onAction="#addReminder" prefHeight="37.0" prefWidth="220.0" style="-fx-background-color: #614321; -fx-cursor: hand;" text="Add Reminder" textFill="WHITE" />
-            <ToggleButton fx:id="tbTask" mnemonicParsing="false" onAction="#addTask" prefHeight="37.0" prefWidth="220.0" style="-fx-background-color: #614321; -fx-cursor: hand;" text="Add Task" textFill="WHITE" />
-            <TilePane alignment="CENTER" prefHeight="38.0" prefWidth="240.0" style="-fx-background-color: #614321;">
-               <children>
-                  <DatePicker fx:id="date" style="-fx-cursor: hand;" />
-               </children>
-            </TilePane>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-   </left>
    <top>
       <VBox prefHeight="62.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
@@ -120,6 +103,17 @@
             </MenuBar>
             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="600.0" spacing="10.0">
                <children>
+                  <ToggleButton fx:id="tbEvent" mnemonicParsing="false" onMouseClicked="#addEvent" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #f4c076; -fx-cursor: hand;" text="Add Event" textAlignment="CENTER" />
+                  <ToggleButton fx:id="tbRemind" mnemonicParsing="false" onAction="#addReminder" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #f4c076; -fx-cursor: hand; -fx-border-width: 5;" text="Add Reminder" textAlignment="CENTER" />
+                  <ToggleButton fx:id="tbTask" mnemonicParsing="false" onAction="#addTask" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #f4c076; -fx-cursor: hand; -fx-border-width: 5;" text="Add Task" textAlignment="CENTER" />
+                  <TilePane alignment="CENTER" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #f4c076;">
+                     <children>
+                        <DatePicker fx:id="date" style="-fx-cursor: hand;" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </HBox.margin>
+                  </TilePane>
                   <Label fx:id="lbMonth" text="*Month*">
                      <font>
                         <Font size="24.0" />

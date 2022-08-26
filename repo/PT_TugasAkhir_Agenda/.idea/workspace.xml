@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23b4604d-330c-40e1-b865-14d4895848b6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="23b4604d-330c-40e1-b865-14d4895848b6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,16 +38,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Juan Sterling/Documents/Kuliah/Sem Antara/PBO2/TugasAkhir_PTP/repo/PT_TugasAkhir_Agenda",
-    "settings.editor.selected.configurable": "preferences.general"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ASUS/Documents/SA 2/Pemrograman Terapan/PT06_2072030&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.MainApplication">
     <configuration name="CalendarApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.pt_tugasakhir_agenda.CalendarApp" />
@@ -77,6 +78,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.CalendarApp" />
+      <item itemvalue="Application.MainApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
@@ -106,11 +111,10 @@
       <workItem from="1661320744646" duration="1190000" />
       <workItem from="1661326547113" duration="16591000" />
       <workItem from="1661357274429" duration="4498000" />
-<<<<<<< Updated upstream
-      <workItem from="1661362371401" duration="194000" />
-=======
-      <workItem from="1661520201654" duration="706000" />
->>>>>>> Stashed changes
+      <workItem from="1661520198630" duration="9344000" />
+      <workItem from="1661537528343" duration="6989000" />
+      <workItem from="1661544787598" duration="32000" />
+      <workItem from="1661544829019" duration="212000" />
     </task>
     <servers />
   </component>

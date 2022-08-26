@@ -7,7 +7,7 @@ public class Event {
     private String eventtimestart;
     private String eventtimestop;
     private int eventtrash;
-    private Category idcategory;
+    private Category category;
     private User username;
 
     public int getIdevent() {
@@ -50,12 +50,12 @@ public class Event {
         this.eventtrash = eventtrash;
     }
 
-    public Category getIdcategory() {
-        return idcategory;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setIdcategory(Category idcategory) {
-        this.idcategory = idcategory;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public User getUsername() {
@@ -66,13 +66,13 @@ public class Event {
         this.username = username;
     }
 
-    public Event(int idevent, String eventname, String eventtimestart, String eventtimestop, int eventtrash, Category idcategory, User username) {
+    public Event(int idevent, String eventname, String eventtimestart, String eventtimestop, int eventtrash, Category category, User username) {
         this.idevent = idevent;
         this.eventname = eventname;
         this.eventtimestart = eventtimestart;
         this.eventtimestop = eventtimestop;
         this.eventtrash = eventtrash;
-        this.idcategory = idcategory;
+        this.category = category;
         this.username = username;
     }
 }

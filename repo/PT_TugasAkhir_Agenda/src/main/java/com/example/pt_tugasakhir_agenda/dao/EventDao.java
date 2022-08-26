@@ -116,16 +116,71 @@ public class EventDao implements DaoInterface<Event> {
 
     @Override
     public int addData(Event data) {
-        return 0;
+        Connection conn = MyConnection.getConnection();
+        String query = "INSERT INTO event(idEvent, eventName, eventTimeStart, eventTimeStop, eventTrash, Category_idCategory, user_userName) values(?,?,?,?,?,?,?)";
+        PreparedStatement ps;
+        int result;
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, data.getIdevent());
+            ps.setString(2, data.getEventname());
+            ps.setString(3, data.getEventtimestart());
+            ps.setString(4,data.getEventtimestop());
+            ps.setInt(5,data.getEventtrash());
+            ps.setInt(6,data.getCategory().getIdcategory());
+            ps.setString(7,data.getUsername().getUsername());
+            result = ps.executeUpdate();
+            if (result > 0) {
+                System.out.println("add event successfully");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 
     @Override
     public int updateData(Event data) {
-        return 0;
+        Connection conn = MyConnection.getConnection();
+        String query = "UPDATE event SET eventName = ?, eventTimeStart = ?, eventTimeStop = ?, eventTrash = ?, Category_idCategory = ?, user_userName = ? WHERE idEvent = ?";
+        PreparedStatement ps;
+        int result;
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1, data.getEventname());
+            ps.setString(2, data.getEventtimestart());
+            ps.setString(3,data.getEventtimestop());
+            ps.setInt(4,data.getEventtrash());
+            ps.setInt(5,data.getCategory().getIdcategory());
+            ps.setString(6,data.getUsername().getUsername());
+            ps.setInt(7, data.getIdevent());
+            result = ps.executeUpdate();
+            if (result > 0) {
+                System.out.println("update event successfully");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 
     @Override
     public int deleteData(Event data) {
-        return 0;
+        Connection conn = MyConnection.getConnection();
+        String query = "DELETE FROM event WHERE idEvent = ?";
+        PreparedStatement ps;
+        int result;
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setInt(1,data.getIdevent());
+            result = ps.executeUpdate();
+            if (result > 0) {
+                System.out.println("delete item successfully");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 }

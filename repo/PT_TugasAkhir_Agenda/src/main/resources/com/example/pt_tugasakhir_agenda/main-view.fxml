@@ -87,7 +87,7 @@
          <children>
             <MenuBar prefWidth="132.0">
               <menus>
-                <Menu mnemonicParsing="false" text="Category">
+                <Menu mnemonicParsing="false" onAction="#showCategory" text="Category">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Edit Category" />
                         <MenuItem mnemonicParsing="false" text="Close" />
@@ -103,7 +103,7 @@
             </MenuBar>
             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <ToggleButton fx:id="tbEvent" mnemonicParsing="false" onMouseClicked="#addEvent" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #86c5db; -fx-cursor: hand; -fx-border-color: black;" text="Add Event" textAlignment="CENTER" />
+                  <ToggleButton fx:id="tbEvent" mnemonicParsing="false" onAction="#showAddEvent" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #86c5db; -fx-cursor: hand; -fx-border-color: black;" text="Add Event" textAlignment="CENTER" />
                   <ToggleButton fx:id="tbRemind" mnemonicParsing="false" onAction="#addReminder" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #e8a7b1; -fx-cursor: hand; -fx-border-color: black;" text="Add Reminder" textAlignment="CENTER" />
                   <ToggleButton fx:id="tbTask" mnemonicParsing="false" onAction="#addTask" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #c8c8c8; -fx-cursor: hand; -fx-border-color: black;" text="Add Task" textAlignment="CENTER" />
                   <TilePane alignment="CENTER" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #f4c076;">

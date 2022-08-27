@@ -24,4 +24,9 @@ public class Category {
         this.idcategory = idcategory;
         this.categoryname = categoryname;
     }
+
+    @Override
+    public String toString() {
+        return categoryname;
+    }
 }

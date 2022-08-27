@@ -189,7 +189,7 @@ public class MainController {
     }
     public void showCategory() throws IOException {
         fxmlLoader = new FXMLLoader(MainApplication.class.getResource("category.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 250, 200);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage = new Stage();
         stage.setScene(scene);
         stage.show();

@@ -64,6 +64,8 @@ public class CategoryDao implements DaoInterface<Category>{
         int result;
         try {
             ps = conn.prepareStatement(query);
+            System.out.println(data.getCategoryname());
+            System.out.println(data.getIdcategory());
             ps.setString(1, data.getCategoryname());
             ps.setInt(2, data.getIdcategory());
             result = ps.executeUpdate();

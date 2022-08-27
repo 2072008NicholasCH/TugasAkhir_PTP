@@ -85,10 +85,12 @@ public class MainController {
                 col = 0;
                 row += 1;
             } else {
+                ScrollPane sPane = new ScrollPane();
+                sPane.setStyle("-fx-background-color: transparent");
                 VBox vbox = new VBox();
                 Label label = new Label(String.valueOf(i));
                 vbox.getChildren().add(label);
-                vbox.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
+                sPane.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
                     label.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
                     date.setValue(LocalDate.of(date.getValue().getYear(), date.getValue().getMonthValue(), Integer.parseInt(label.getText())));
                 });
@@ -97,7 +99,8 @@ public class MainController {
                 }
                 GridPane.setHalignment(label, HPos.LEFT);
                 GridPane.setValignment(label, VPos.TOP);
-                calendarView.add(vbox ,col,row);
+                sPane.setContent(vbox);
+                calendarView.add(sPane ,col,row);
                 col++;
                 i++;
             }
@@ -109,8 +112,9 @@ public class MainController {
             Iterator<Node> children = calendarView.getChildren().iterator();
             while (children.hasNext()) {
                 Node node = children.next();
-                if (node instanceof VBox) {
-                    VBox vbox = (VBox) node;
+                if (node instanceof ScrollPane) {
+                    ScrollPane sPane = (ScrollPane) node;
+                    VBox vbox = (VBox) sPane.getContent();
                     Label label = (Label) vbox.getChildren().get(0);
                     if (label.getText().equals(String.valueOf(dateTime.getDayOfMonth()))) {
                         children.remove();
@@ -118,7 +122,8 @@ public class MainController {
                         int cols = GridPane.getColumnIndex(node);
                         Label labelDate = new Label(String.valueOf(dateTime.getDayOfMonth()));
                         vbox.setSpacing(5);
-                        vbox.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
+                        sPane.setStyle("-fx-background-color: transparent");
+                        sPane.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
                             label.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
                             date.setValue(LocalDate.of(date.getValue().getYear(), date.getValue().getMonthValue(), Integer.parseInt(label.getText())));
                         });
@@ -132,7 +137,7 @@ public class MainController {
                         btn.setOnAction(test -> getData(btn));
 
                         vbox.getChildren().add(btn);
-                        calendarView2.add(vbox,cols,rows);
+                        calendarView2.add(sPane,cols,rows);
                     }
                 }
             }
@@ -170,15 +175,7 @@ public class MainController {
 
     public void removeGridPane() {
         ObservableList<Node> children = calendarView.getChildren();
-        Iterator<Node> iter = children.iterator();
-        while (iter.hasNext()) {
-            Node node = iter.next();
-            if (node instanceof Label) {
-                iter.remove();
-            } else if (node instanceof VBox) {
-                iter.remove();
-            }
-        }
+        children.removeIf(node -> node instanceof ScrollPane);
     }
     public void showAddEvent() throws IOException {
         fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-event-view.fxml"));
@@ -196,6 +193,9 @@ public class MainController {
         fxmlLoader = new FXMLLoader(MainApplication.class.getResource("category.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage = new Stage();
+        stage.setTitle("Category Management");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.show();
     }

@@ -134,7 +134,13 @@ public class MainController {
                         btn.setStyle("-fx-background-color: #86c5db; -fx-cursor: hand");
                         btn.setText(event.getEventname());
                         btn.setId(String.valueOf(event.getIdevent()));
-                        btn.setOnAction(test -> getData(btn));
+                        btn.setOnAction(test -> {
+                            try {
+                                getData(btn);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
 
                         vbox.getChildren().add(btn);
                         calendarView2.add(sPane,cols,rows);
@@ -144,15 +150,20 @@ public class MainController {
             calendarView.getChildren().addAll(calendarView2.getChildren());
         }
     }
-    public void getData(Button btn) {
+    public void getData(Button btn) throws IOException {
         Event event = eDao.getEventDetails(Integer.parseInt(btn.getId()));
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.OK);
+        ButtonType ok = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType update = new ButtonType("Update");
+        ButtonType trash = new ButtonType("Move to Trash");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ok, update, trash);
         String eventName = event.getEventname();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateStart = LocalDateTime.parse(event.getEventtimestart(), formatter);
         LocalDateTime dateStop = LocalDateTime.parse(event.getEventtimestop(), formatter);
         LocalTime timeStart = dateStart.toLocalTime();
         LocalTime timeStop = dateStop.toLocalTime();
+        System.out.println(dateStart);
+        System.out.println(dateStop);
         String details = dateStart.getDayOfMonth() + " " + dateStart.getMonth() + " " + dateStart.getYear() + " " + timeStart + " - " +
                 dateStop.getDayOfMonth() + " " + dateStop.getMonth() + " " + dateStop.getYear() + " " + timeStop + "\n" +
                 "Category: " + event.getCategory().getCategoryname();
@@ -160,6 +171,23 @@ public class MainController {
         alert.setHeaderText(eventName);
         alert.setContentText(details);
         alert.showAndWait();
+        if (alert.getResult() == update) {
+            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-event-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+            AddEventController aeController = fxmlLoader.getController();
+            aeController.setDate(date.getValue());
+            aeController.setData("Update Event", event, timeStart, timeStop);
+            stage = new Stage();
+            stage.setTitle("Update Event");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            changeDate();
+        } else if (alert.getResult() == trash) {
+            Event e = new Event(event.getIdevent(), event.getEventname(), event.getEventtimestart(), event.getEventtimestop(), 1, event.getCategory(), event.getUsername());
+            eDao.updateData(e);
+            changeDate();
+        }
     }
     public void setToday() {
         LocalDate now = LocalDate.now();

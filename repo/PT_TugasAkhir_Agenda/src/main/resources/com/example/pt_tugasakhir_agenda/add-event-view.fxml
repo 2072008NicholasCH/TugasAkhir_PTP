@@ -39,14 +39,14 @@
                <children>
                   <DatePicker fx:id="dateStart" prefHeight="26.0" prefWidth="194.0" promptText="mm/dd/yyyy" />
                   <Label text="Time" />
-                  <TextField fx:id="timeStart" prefHeight="26.0" prefWidth="109.0" promptText="00:00" />
+                  <TextField fx:id="timeStart" prefHeight="26.0" prefWidth="109.0" promptText="00:00" text="00:00" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <DatePicker fx:id="dateFinish" prefHeight="26.0" prefWidth="194.0" promptText="mm/dd/yyyy" />
                   <Label text="Time" />
-                  <TextField fx:id="timeFinish" prefHeight="26.0" prefWidth="109.0" promptText="00:00" />
+                  <TextField fx:id="timeFinish" prefHeight="26.0" prefWidth="109.0" promptText="00:00" text="01:00" />
                </children>
             </HBox>
          </children>
@@ -58,7 +58,7 @@
    <bottom>
       <HBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="491.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#addEvent" prefHeight="38.0" prefWidth="485.0" style="-fx-background-color: #86c5db; -fx-border-color: black;" text="Add Event">
+            <Button fx:id="btnEvent" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#addEvent" prefHeight="38.0" prefWidth="485.0" style="-fx-background-color: #86c5db; -fx-cursor: hand;" text="Add Event">
                <font>
                   <Font size="16.0" />
                </font>

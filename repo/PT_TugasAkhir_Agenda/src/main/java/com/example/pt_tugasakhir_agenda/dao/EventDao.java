@@ -83,7 +83,7 @@ public class EventDao implements DaoInterface<Event> {
     public ObservableList<Event> getEventDate(int month, int year) {
         eList = FXCollections.observableArrayList();
         conn = MyConnection.getConnection();
-        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE MONTH(e.eventTimeStart) = ? AND YEAR(e.eventTimeStart) = ?";
+        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE MONTH(e.eventTimeStart) = ? AND YEAR(e.eventTimeStart) = ? AND e.eventTrash = 0";
         PreparedStatement ps;
         try {
             ps = conn.prepareStatement(query);

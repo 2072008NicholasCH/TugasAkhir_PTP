@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class AddEventController {
     @FXML
@@ -22,10 +24,13 @@ public class AddEventController {
     @FXML
     private TextField timeFinish;
     @FXML
+    private Button btnEvent;
+    @FXML
     private ComboBox<Category> cbCategory;
     private ObservableList<Category> cList;
     private CategoryDao cDao;
     private EventDao eDao;
+    private int id;
     public void initialize() {
         cDao = new CategoryDao();
         eDao = new EventDao();
@@ -38,19 +43,116 @@ public class AddEventController {
         dateFinish.setValue(date.plusDays(1));
     }
     public void addEvent() {
-        String dateTimeStart = dateStart.getValue() + " " + timeStart.getText();
-        String dateTimeFinish = dateFinish.getValue() + " " + timeFinish.getText();
-        User u = new User("user1", "user");
-        Event e = new Event(0, txtEventName.getText(), dateTimeStart, dateTimeFinish, 0, cbCategory.getSelectionModel().getSelectedItem(), u);
-        int res = eDao.addData(e);
-        if (res > 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Event Added Successfully", ButtonType.OK);
+        if (txtEventName.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill the event name field", ButtonType.OK);
             alert.showAndWait();
-            txtEventName.getScene().getWindow().hide();
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Error on add event",ButtonType.OK);
-            alert.showAndWait();
+            if (dateStart.getValue().isEqual(dateFinish.getValue())) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+                LocalTime start = LocalTime.parse(timeStart.getText(), formatter);
+                LocalTime finish = LocalTime.parse(timeFinish.getText(), formatter);
+                if (start.isBefore(finish)) {
+                    String dateTimeStart = dateStart.getValue() + " " + timeStart.getText();
+                    String dateTimeFinish = dateFinish.getValue() + " " + timeFinish.getText();
+
+                    User u = new User("user1", "user");
+                    Event e = new Event(0, txtEventName.getText(), dateTimeStart, dateTimeFinish, 0, cbCategory.getSelectionModel().getSelectedItem(), u);
+                    int res = eDao.addData(e);
+                    if (res > 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Event added successfully", ButtonType.OK);
+                        alert.showAndWait();
+                        txtEventName.getScene().getWindow().hide();
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Error on add event", ButtonType.OK);
+                        alert.showAndWait();
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Finish event time is before Start event time!", ButtonType.OK);
+                    alert.showAndWait();
+                }
+            } else if (dateStart.getValue().isBefore(dateFinish.getValue())) {
+                String dateTimeStart = dateStart.getValue() + " " + timeStart.getText();
+                String dateTimeFinish = dateFinish.getValue() + " " + timeFinish.getText();
+
+                User u = new User("user1", "user");
+                Event e = new Event(0, txtEventName.getText(), dateTimeStart, dateTimeFinish, 0, cbCategory.getSelectionModel().getSelectedItem(), u);
+                int res = eDao.addData(e);
+                if (res > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Event added successfully", ButtonType.OK);
+                    alert.showAndWait();
+                    txtEventName.getScene().getWindow().hide();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Error on add event", ButtonType.OK);
+                    alert.showAndWait();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Finish event date is before Start event date!", ButtonType.OK);
+                alert.showAndWait();
+            }
         }
     }
+    public void setData (String text, Event event, LocalTime startTime, LocalTime stopTime) {
+        btnEvent.setText(text);
+        btnEvent.setOnAction(actionEvent -> {
+            updateEvent(event);
+        });
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDate startDate = LocalDate.parse(event.getEventtimestart(), formatter);
+        LocalDate finishDate = LocalDate.parse(event.getEventtimestop(), formatter);
+        txtEventName.setText(event.getEventname());
+        dateStart.setValue(startDate);
+        timeStart.setText(String.valueOf(startTime));
+        dateFinish.setValue(finishDate);
+        timeFinish.setText(String.valueOf(stopTime));
+        cbCategory.setValue(event.getCategory());
+    }
+    public void updateEvent(Event event) {
+        if (txtEventName.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill the event name field", ButtonType.OK);
+            alert.showAndWait();
+        } else {
+            if (dateStart.getValue().isEqual(dateFinish.getValue())) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+                LocalTime start = LocalTime.parse(timeStart.getText(), formatter);
+                LocalTime finish = LocalTime.parse(timeFinish.getText(), formatter);
+                if (start.isBefore(finish)) {
+                    String dateTimeStart = dateStart.getValue() + " " + timeStart.getText();
+                    String dateTimeFinish = dateFinish.getValue() + " " + timeFinish.getText();
 
+                    User u = new User("user1", "user");
+                    Event e = new Event(event.getIdevent(), txtEventName.getText(), dateTimeStart, dateTimeFinish, 0, cbCategory.getSelectionModel().getSelectedItem(), u);
+                    int res = eDao.updateData(e);
+                    if (res > 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Event updated successfully", ButtonType.OK);
+                        alert.showAndWait();
+                        txtEventName.getScene().getWindow().hide();
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Error on update event", ButtonType.OK);
+                        alert.showAndWait();
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Finish event time is before Start event time!", ButtonType.OK);
+                    alert.showAndWait();
+                }
+            } else if (dateStart.getValue().isBefore(dateFinish.getValue())) {
+                String dateTimeStart = dateStart.getValue() + " " + timeStart.getText();
+                String dateTimeFinish = dateFinish.getValue() + " " + timeFinish.getText();
+
+                User u = new User("user1", "user");
+                Event e = new Event(event.getIdevent(), txtEventName.getText(), dateTimeStart, dateTimeFinish, 0, cbCategory.getSelectionModel().getSelectedItem(), u);
+                int res = eDao.updateData(e);
+                if (res > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Event updated successfully", ButtonType.OK);
+                    alert.showAndWait();
+                    txtEventName.getScene().getWindow().hide();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Error on update event", ButtonType.OK);
+                    alert.showAndWait();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Finish event date is before Start event date!", ButtonType.OK);
+                alert.showAndWait();
+            }
+        }
+    }
 }

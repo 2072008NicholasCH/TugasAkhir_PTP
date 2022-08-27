@@ -68,7 +68,7 @@ public class CategoryController {
         reset();
     }
     public void deleteCategory() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure want to delete this category?", ButtonType.OK, ButtonType.CANCEL);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to delete this category?", ButtonType.OK, ButtonType.CANCEL);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.OK) {
             cDao.deleteData(tbCategory.getSelectionModel().getSelectedItem());

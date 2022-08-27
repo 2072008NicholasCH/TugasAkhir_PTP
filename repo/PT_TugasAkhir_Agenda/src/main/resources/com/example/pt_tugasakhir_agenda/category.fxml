@@ -9,10 +9,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
@@ -45,33 +45,28 @@
                   <Insets bottom="15.0" left="10.0" right="10.0" />
                </VBox.margin>
             </GridPane>
-            <GridPane alignment="TOP_CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <HBox prefHeight="60.0" prefWidth="580.0">
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="213.0" text="Add Category">
-                     <GridPane.margin>
-                        <Insets right="5.0" />
-                     </GridPane.margin>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="214.0" text="Update Category" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets right="5.0" />
-                     </GridPane.margin>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="214.0" text="Update Category">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="206.0" text="Delete Category" GridPane.columnIndex="2" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="206.0" text="Delete Category">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin></Button>
+                  <Button alignment="CENTER" layoutX="409.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="206.0" text="Reset " />
                </children>
-               <padding>
+               <VBox.margin>
                   <Insets left="10.0" right="10.0" />
-               </padding>
-            </GridPane>
+               </VBox.margin>
+            </HBox>
             <TableView prefHeight="278.0" prefWidth="600.0">
               <columns>
                 <TableColumn prefWidth="147.0" text="ID" />

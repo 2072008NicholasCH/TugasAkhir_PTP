@@ -87,9 +87,9 @@
          <children>
             <MenuBar prefWidth="132.0">
               <menus>
-                <Menu mnemonicParsing="false" onAction="#showCategory" text="Category">
+                <Menu mnemonicParsing="false" text="Category">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Edit Category" />
+                    <MenuItem mnemonicParsing="false" onAction="#showCategory" text="Edit Category" />
                         <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
                 </Menu>

@@ -19,7 +19,6 @@ public class EventDao implements DaoInterface<Event> {
 
     @Override
     public ObservableList<Event> getData() {
-
         eList = FXCollections.observableArrayList();
         conn = MyConnection.getConnection();
         String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName;";

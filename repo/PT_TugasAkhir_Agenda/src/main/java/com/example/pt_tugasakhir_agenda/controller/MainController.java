@@ -58,6 +58,7 @@ public class MainController {
         };
         date.setOnAction(event);
     }
+
     public void changeDate() {
         eList = eDao.getEventDate(date.getValue().getMonthValue(), date.getValue().getYear());
 
@@ -115,14 +116,14 @@ public class MainController {
                         children.remove();
                         int rows = GridPane.getRowIndex(node);
                         int cols = GridPane.getColumnIndex(node);
-                        VBox vBox = new VBox();
-                        Label eventName = new Label(String.valueOf(dateTime.getDayOfMonth()));
-                        vBox.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
+                        Label labelDate = new Label(String.valueOf(dateTime.getDayOfMonth()));
+                        vbox.setSpacing(5);
+                        vbox.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
                             label.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
                             date.setValue(LocalDate.of(date.getValue().getYear(), date.getValue().getMonthValue(), Integer.parseInt(label.getText())));
                         });
                         if (label.getText().equals(String.valueOf(today.getDayOfMonth()))) {
-                            eventName.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
+                            labelDate.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
                         }
                         Button btn = new Button();
                         btn.setStyle("-fx-background-color: #86c5db; -fx-cursor: hand");
@@ -130,11 +131,8 @@ public class MainController {
                         btn.setId(String.valueOf(event.getIdevent()));
                         btn.setOnAction(test -> getData(btn));
 
-                        vBox.getChildren().add(eventName);
-                        vBox.getChildren().add(btn);
-                        GridPane.setHalignment(eventName, HPos.LEFT);
-                        GridPane.setValignment(eventName, VPos.TOP);
-                        calendarView2.add(vBox,cols,rows);
+                        vbox.getChildren().add(btn);
+                        calendarView2.add(vbox,cols,rows);
                     }
                 }
             }
@@ -192,6 +190,7 @@ public class MainController {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+        changeDate();
     }
     public void showCategory() throws IOException {
         fxmlLoader = new FXMLLoader(MainApplication.class.getResource("category.fxml"));

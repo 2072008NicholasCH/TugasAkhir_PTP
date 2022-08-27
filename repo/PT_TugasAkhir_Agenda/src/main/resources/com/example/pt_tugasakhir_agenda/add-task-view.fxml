@@ -16,7 +16,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="312.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <GridPane prefHeight="226.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <GridPane alignment="TOP_CENTER" prefHeight="226.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="135.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="336.0" />
@@ -28,11 +28,11 @@
             <RowConstraints maxHeight="315.0" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Task Name" />
-            <TextField GridPane.columnIndex="1" />
-            <Label text="Task Time" GridPane.rowIndex="1" />
-            <DatePicker prefHeight="25.0" prefWidth="441.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Category" GridPane.rowIndex="2" />
+            <Label text="Task Name:" />
+            <TextField promptText="Task Name" GridPane.columnIndex="1" />
+            <Label text="Task Time:" GridPane.rowIndex="1" />
+            <DatePicker prefHeight="25.0" prefWidth="441.0" promptText="mm/dd/yyyy" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Category:" GridPane.rowIndex="2" />
             <ComboBox prefHeight="25.0" prefWidth="357.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
          <BorderPane.margin>
@@ -41,7 +41,7 @@
       </GridPane>
    </center>
    <bottom>
-      <HBox prefHeight="85.0" prefWidth="491.0" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="491.0" BorderPane.alignment="CENTER">
          <children>
             <Button alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="16.0" prefWidth="471.0" style="-fx-background-color: #c8c8c8; -fx-border-color: black;" text="Add Task">
                <font>
@@ -55,7 +55,7 @@
       </HBox>
    </bottom>
    <top>
-      <VBox prefHeight="50.0" prefWidth="491.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="491.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="TOP_CENTER" prefHeight="37.0" prefWidth="600.0" style="-fx-background-color: #c8c8c8;" text="Task">
                <font>

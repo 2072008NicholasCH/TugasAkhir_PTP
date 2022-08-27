@@ -16,7 +16,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pt_tugasakhir_agenda.controller.AddEventController">
    <center>
-      <GridPane prefHeight="226.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <GridPane alignment="TOP_CENTER" prefHeight="226.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="135.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="336.0" />
@@ -29,24 +29,24 @@
             <RowConstraints maxHeight="315.0" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Event Name" />
-            <TextField fx:id="txtEventName" GridPane.columnIndex="1" />
-            <Label text="Start Event" GridPane.rowIndex="1" />
-            <Label text="Finish Event" GridPane.rowIndex="2" />
-            <Label text="Category" GridPane.rowIndex="3" />
+            <Label text="Event Name:" />
+            <TextField fx:id="txtEventName" promptText="Event Name" GridPane.columnIndex="1" />
+            <Label text="Start Event:" GridPane.rowIndex="1" />
+            <Label text="Finish Event:" GridPane.rowIndex="2" />
+            <Label text="Category:" GridPane.rowIndex="3" />
             <ComboBox fx:id="cbCategory" prefHeight="25.0" prefWidth="357.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <DatePicker fx:id="dateStart" prefHeight="26.0" prefWidth="194.0" />
+                  <DatePicker fx:id="dateStart" prefHeight="26.0" prefWidth="194.0" promptText="mm/dd/yyyy" />
                   <Label text="Time" />
-                  <TextField fx:id="timeStart" prefHeight="26.0" prefWidth="109.0" text="00:00" />
+                  <TextField fx:id="timeStart" prefHeight="26.0" prefWidth="109.0" promptText="00:00" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <DatePicker fx:id="dateFinish" prefHeight="26.0" prefWidth="194.0" />
+                  <DatePicker fx:id="dateFinish" prefHeight="26.0" prefWidth="194.0" promptText="mm/dd/yyyy" />
                   <Label text="Time" />
-                  <TextField fx:id="timeFinish" prefHeight="26.0" prefWidth="109.0" text="00:00" />
+                  <TextField fx:id="timeFinish" prefHeight="26.0" prefWidth="109.0" promptText="00:00" />
                </children>
             </HBox>
          </children>
@@ -56,7 +56,7 @@
       </GridPane>
    </center>
    <bottom>
-      <HBox prefHeight="85.0" prefWidth="491.0" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_CENTER" prefHeight="85.0" prefWidth="491.0" BorderPane.alignment="CENTER">
          <children>
             <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#addEvent" prefHeight="38.0" prefWidth="485.0" style="-fx-background-color: #86c5db; -fx-border-color: black;" text="Add Event">
                <font>
@@ -70,7 +70,7 @@
       </HBox>
    </bottom>
    <top>
-      <VBox prefHeight="50.0" prefWidth="491.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="491.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="TOP_CENTER" prefHeight="37.0" prefWidth="600.0" style="-fx-background-color: #86c5db;" text="Event">
                <font>

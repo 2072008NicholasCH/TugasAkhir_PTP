@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -106,14 +107,12 @@
                   <ToggleButton fx:id="tbEvent" mnemonicParsing="false" onAction="#showAddEvent" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #86c5db; -fx-cursor: hand; -fx-border-color: black;" text="Add Event" textAlignment="CENTER" />
                   <ToggleButton fx:id="tbRemind" mnemonicParsing="false" onAction="#addReminder" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #e8a7b1; -fx-cursor: hand; -fx-border-color: black;" text="Add Reminder" textAlignment="CENTER" />
                   <ToggleButton fx:id="tbTask" mnemonicParsing="false" onAction="#addTask" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #c8c8c8; -fx-cursor: hand; -fx-border-color: black;" text="Add Task" textAlignment="CENTER" />
-                  <TilePane alignment="CENTER" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #f4c076;">
+                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="250.0" spacing="10.0">
                      <children>
                         <DatePicker fx:id="date" style="-fx-cursor: hand;" />
+                        <Button fx:id="today" mnemonicParsing="false" style="-fx-background-color: #f4c076; -fx-cursor: hand;" text="Today" />
                      </children>
-                     <HBox.margin>
-                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                     </HBox.margin>
-                  </TilePane>
+                  </HBox>
                   <Label fx:id="lbMonth" text="*Month*">
                      <font>
                         <Font size="24.0" />

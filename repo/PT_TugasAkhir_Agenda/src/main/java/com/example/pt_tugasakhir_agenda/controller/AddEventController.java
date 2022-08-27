@@ -24,6 +24,9 @@ public class AddEventController {
     private DatePicker dateFinish;
     @FXML
     private ComboBox<Category> cbCategory;
+    public void initialize() {
+        System.out.println("test");
+    }
 
     public void setDate(LocalDate date) {
         dateStart.setValue(date);

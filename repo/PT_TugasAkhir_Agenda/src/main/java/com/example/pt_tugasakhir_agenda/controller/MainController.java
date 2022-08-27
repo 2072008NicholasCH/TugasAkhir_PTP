@@ -36,15 +36,20 @@ public class MainController {
     private DatePicker date;
     @FXML
     private GridPane calendarView;
+    @FXML
+    private Button today;
     private EventDao eDao;
     private ObservableList<Event> eList;
     private FXMLLoader fxmlLoader;
     private Stage stage;
 
-    public void initialize() throws IOException {
+    public void initialize() {
         eDao = new EventDao();
         LocalDate now = LocalDate.now();
         date.setValue(now);
+        today.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
+            setToday();
+        });
         changeDate();
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
@@ -153,8 +158,9 @@ public class MainController {
         alert.setContentText(details);
         alert.showAndWait();
     }
-    public DatePicker getDate() {
-        return date;
+    public void setToday() {
+        LocalDate now = LocalDate.now();
+        date.setValue(now);
     }
     public void addReminder(){
         System.out.println("itil");

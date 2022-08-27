@@ -4,7 +4,7 @@ public class Task {
     private int idtask;
     private String taskname;
     private String tasktime;
-    private Category idcategory;
+    private Category category;
     private User username;
 
     public int getIdtask() {
@@ -31,12 +31,12 @@ public class Task {
         this.tasktime = tasktime;
     }
 
-    public Category getIdcategory() {
-        return idcategory;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setIdcategory(Category idcategory) {
-        this.idcategory = idcategory;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public User getUsername() {
@@ -47,11 +47,11 @@ public class Task {
         this.username = username;
     }
 
-    public Task(int idtask, String taskname, String tasktime, Category idcategory, User username) {
+    public Task(int idtask, String taskname, String tasktime, Category category, User username) {
         this.idtask = idtask;
         this.taskname = taskname;
         this.tasktime = tasktime;
-        this.idcategory = idcategory;
+        this.category = category;
         this.username = username;
     }
 }

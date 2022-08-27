@@ -14,13 +14,15 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class EventDao implements DaoInterface<Event> {
+    ObservableList<Event> eList;
+    Connection conn;
 
     @Override
     public ObservableList<Event> getData() {
-        ObservableList<Event> eList;
+
         eList = FXCollections.observableArrayList();
-        Connection conn = MyConnection.getConnection();
-        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName";
+        conn = MyConnection.getConnection();
+        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName;";
         PreparedStatement ps;
         try {
             ps = conn.prepareStatement(query);
@@ -49,7 +51,7 @@ public class EventDao implements DaoInterface<Event> {
         return eList;
     }
     public Event getEventDetails(int id) {
-        Connection conn = MyConnection.getConnection();
+        conn = MyConnection.getConnection();
         String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE e.idEvent = ?";
         PreparedStatement ps;
         try {
@@ -80,9 +82,8 @@ public class EventDao implements DaoInterface<Event> {
         return null;
     }
     public ObservableList<Event> getEventDate(int month, int year) {
-        ObservableList<Event> eList;
         eList = FXCollections.observableArrayList();
-        Connection conn = MyConnection.getConnection();
+        conn = MyConnection.getConnection();
         String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE MONTH(e.eventTimeStart) = ? AND YEAR(e.eventTimeStart) = ?";
         PreparedStatement ps;
         try {
@@ -116,7 +117,7 @@ public class EventDao implements DaoInterface<Event> {
 
     @Override
     public int addData(Event data) {
-        Connection conn = MyConnection.getConnection();
+        conn = MyConnection.getConnection();
         String query = "INSERT INTO event(idEvent, eventName, eventTimeStart, eventTimeStop, eventTrash, Category_idCategory, user_userName) values(?,?,?,?,?,?,?)";
         PreparedStatement ps;
         int result;
@@ -141,7 +142,7 @@ public class EventDao implements DaoInterface<Event> {
 
     @Override
     public int updateData(Event data) {
-        Connection conn = MyConnection.getConnection();
+        conn = MyConnection.getConnection();
         String query = "UPDATE event SET eventName = ?, eventTimeStart = ?, eventTimeStop = ?, eventTrash = ?, Category_idCategory = ?, user_userName = ? WHERE idEvent = ?";
         PreparedStatement ps;
         int result;
@@ -166,7 +167,7 @@ public class EventDao implements DaoInterface<Event> {
 
     @Override
     public int deleteData(Event data) {
-        Connection conn = MyConnection.getConnection();
+        conn = MyConnection.getConnection();
         String query = "DELETE FROM event WHERE idEvent = ?";
         PreparedStatement ps;
         int result;
@@ -175,7 +176,7 @@ public class EventDao implements DaoInterface<Event> {
             ps.setInt(1,data.getIdevent());
             result = ps.executeUpdate();
             if (result > 0) {
-                System.out.println("delete item successfully");
+                System.out.println("delete event successfully");
             }
 
         } catch (SQLException e) {

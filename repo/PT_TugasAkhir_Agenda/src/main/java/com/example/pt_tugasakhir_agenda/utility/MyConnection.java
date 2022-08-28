@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class MyConnection {
     public static Connection getConnection(){
-        // 13.214.43.159
+        // 13.214.43.159 admindbs
         Connection conn;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

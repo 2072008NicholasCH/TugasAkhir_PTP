@@ -429,5 +429,17 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+    public void increaseMonth() {
+        date.setValue(date.getValue().plusMonths(1));
+    }
+    public void decreaseMonth() {
+        date.setValue(date.getValue().minusMonths(1));
+    }
+    public void increaseYear() {
+        date.setValue(date.getValue().plusYears(1));
+    }
+    public void decreaseYear() {
+        date.setValue(date.getValue().minusYears(1));
+    }
 
 }

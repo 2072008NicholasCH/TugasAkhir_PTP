@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23b4604d-330c-40e1-b865-14d4895848b6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="23b4604d-330c-40e1-b865-14d4895848b6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Juan Sterling/Documents/Kuliah/Sem Antara/PBO2/TugasAkhir_PTP/repo/PT_TugasAkhir_Agenda",
+    "last_opened_file_path": "C:/Users/ASUS/Documents/SA 2/Pemrograman Terapan/PT_TugasAkhir_Agenda",
     "project.structure.last.edited": "Facets",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -120,7 +117,7 @@
       <workItem from="1661544829019" duration="212000" />
       <workItem from="1661582471357" duration="713000" />
       <workItem from="1661596704867" duration="16624000" />
-      <workItem from="1661670448110" duration="756000" />
+      <workItem from="1661670559979" duration="14264000" />
     </task>
     <servers />
   </component>

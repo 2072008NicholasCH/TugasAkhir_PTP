@@ -38,10 +38,12 @@ public class CategoryController {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("categoryname"));
     }
     public void getSelectedCategory() {
-        txtCategoryName.setText(tbCategory.getSelectionModel().getSelectedItem().getCategoryname());
-        btnAdd.setDisable(true);
-        btnUpdate.setDisable(false);
-        btnDelete.setDisable(false);
+        if (!tbCategory.getSelectionModel().getSelectedCells().isEmpty()) {
+            txtCategoryName.setText(tbCategory.getSelectionModel().getSelectedItem().getCategoryname());
+            btnAdd.setDisable(true);
+            btnUpdate.setDisable(false);
+            btnDelete.setDisable(false);
+        }
     }
     public void addCategory() {
         int res = cDao.addData(new Category(0, txtCategoryName.getText()));

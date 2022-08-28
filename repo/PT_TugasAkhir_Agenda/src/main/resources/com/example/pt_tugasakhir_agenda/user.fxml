@@ -8,21 +8,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="219.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <bottom>
-      <Button fx:id="btnlogin" mnemonicParsing="false" prefHeight="30.0" prefWidth="244.0" style="-fx-background-color: #f4c076; -fx-border-color: black;" text="Login" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="25.0" />
-         </BorderPane.margin>
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-   </bottom>
    <center>
       <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -72,4 +63,15 @@
          </children>
       </VBox>
    </top>
+   <bottom>
+      <HBox alignment="TOP_CENTER" prefHeight="58.0" prefWidth="451.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnlogin" mnemonicParsing="false" prefHeight="30.0" prefWidth="244.0" style="-fx-background-color: #f4c076; -fx-border-color: black;" text="Login">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

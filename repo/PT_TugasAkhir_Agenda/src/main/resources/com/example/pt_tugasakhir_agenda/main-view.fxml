@@ -109,9 +109,9 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <ToggleButton fx:id="tbEvent" mnemonicParsing="false" onAction="#showAddEvent" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #86c5db; -fx-cursor: hand;" text="Add Event" textAlignment="CENTER" />
-                  <ToggleButton fx:id="tbRemind" mnemonicParsing="false" onAction="#addReminder" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Add Reminder" textAlignment="CENTER" />
-                  <ToggleButton fx:id="tbTask" mnemonicParsing="false" onAction="#addTask" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #c8c8c8; -fx-cursor: hand;" text="Add Task" textAlignment="CENTER" />
+                  <ToggleButton fx:id="tbEvent" mnemonicParsing="false" onAction="#showEvent" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #86c5db; -fx-cursor: hand;" text="Add Event" textAlignment="CENTER" />
+                  <ToggleButton fx:id="tbRemind" mnemonicParsing="false" onAction="#showReminder" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Add Reminder" textAlignment="CENTER" />
+                  <ToggleButton fx:id="tbTask" mnemonicParsing="false" onAction="#showTask" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: #c8c8c8; -fx-cursor: hand;" text="Add Task" textAlignment="CENTER" />
                   <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="250.0" spacing="10.0">
                      <children>
                         <DatePicker fx:id="date" style="-fx-cursor: hand;" />

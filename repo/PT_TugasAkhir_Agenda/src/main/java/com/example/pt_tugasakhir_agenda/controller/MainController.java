@@ -2,7 +2,11 @@ package com.example.pt_tugasakhir_agenda.controller;
 
 import com.example.pt_tugasakhir_agenda.MainApplication;
 import com.example.pt_tugasakhir_agenda.dao.EventDao;
+import com.example.pt_tugasakhir_agenda.dao.ReminderDao;
+import com.example.pt_tugasakhir_agenda.dao.TaskDao;
 import com.example.pt_tugasakhir_agenda.model.Event;
+import com.example.pt_tugasakhir_agenda.model.Reminder;
+import com.example.pt_tugasakhir_agenda.model.Task;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -39,12 +43,18 @@ public class MainController {
     @FXML
     private Button today;
     private EventDao eDao;
+    private TaskDao tDao;
+    private ReminderDao rDao;
     private ObservableList<Event> eList;
+    private ObservableList<Task> tList;
+    private ObservableList<Reminder> rList;
     private FXMLLoader fxmlLoader;
     private Stage stage;
 
     public void initialize() {
         eDao = new EventDao();
+        tDao = new TaskDao();
+        rDao = new ReminderDao();
         LocalDate now = LocalDate.now();
         date.setValue(now);
         today.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
@@ -61,6 +71,8 @@ public class MainController {
 
     public void changeDate() {
         eList = eDao.getEventDate(date.getValue().getMonthValue(), date.getValue().getYear());
+        tList = tDao.getTaskDate(date.getValue().getMonthValue(), date.getValue().getYear());
+        rList = rDao.getReminderDate(date.getValue().getMonthValue(), date.getValue().getYear());
 
         removeGridPane();
         LocalDate today = date.getValue();
@@ -136,7 +148,7 @@ public class MainController {
                         btn.setId(String.valueOf(event.getIdevent()));
                         btn.setOnAction(test -> {
                             try {
-                                getData(btn);
+                                getEvent(btn);
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
@@ -149,8 +161,133 @@ public class MainController {
             }
             calendarView.getChildren().addAll(calendarView2.getChildren());
         }
+        GridPane calendarView3 = new GridPane();
+        for (Task task : tList) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime dateTime = LocalDateTime.parse(task.getTasktime(), formatter);
+            Iterator<Node> children = calendarView.getChildren().iterator();
+            while (children.hasNext()) {
+                Node node = children.next();
+                if (node instanceof ScrollPane) {
+                    ScrollPane sPane = (ScrollPane) node;
+                    VBox vbox = (VBox) sPane.getContent();
+                    Label label = (Label) vbox.getChildren().get(0);
+                    if (label.getText().equals(String.valueOf(dateTime.getDayOfMonth()))) {
+                        children.remove();
+                        int rows = GridPane.getRowIndex(node);
+                        int cols = GridPane.getColumnIndex(node);
+                        Label labelDate = new Label(String.valueOf(dateTime.getDayOfMonth()));
+                        vbox.setSpacing(5);
+                        sPane.setStyle("-fx-background-color: transparent");
+                        sPane.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
+                            label.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
+                            date.setValue(LocalDate.of(date.getValue().getYear(), date.getValue().getMonthValue(), Integer.parseInt(label.getText())));
+                        });
+                        if (label.getText().equals(String.valueOf(today.getDayOfMonth()))) {
+                            labelDate.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
+                        }
+                        Button btn = new Button();
+                        btn.setStyle("-fx-background-color: #c8c8c8; -fx-cursor: hand");
+                        btn.setText(task.getTaskname());
+                        btn.setId(String.valueOf(task.getIdtask()));
+                        btn.setOnAction(test -> {
+                            try {
+                                getTask(btn);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
+
+                        vbox.getChildren().add(btn);
+                        calendarView3.add(sPane,cols,rows);
+                    }
+                }
+            }
+            calendarView.getChildren().addAll(calendarView3.getChildren());
+        }
+        GridPane calendarView4 = new GridPane();
+        for (Reminder reminder : rList) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime dateTime = LocalDateTime.parse(reminder.getRemindertime(), formatter);
+            Iterator<Node> children = calendarView.getChildren().iterator();
+            while (children.hasNext()) {
+                Node node = children.next();
+                if (node instanceof ScrollPane) {
+                    ScrollPane sPane = (ScrollPane) node;
+                    VBox vbox = (VBox) sPane.getContent();
+                    Label label = (Label) vbox.getChildren().get(0);
+                    if (label.getText().equals(String.valueOf(dateTime.getDayOfMonth()))) {
+                        children.remove();
+                        int rows = GridPane.getRowIndex(node);
+                        int cols = GridPane.getColumnIndex(node);
+                        Label labelDate = new Label(String.valueOf(dateTime.getDayOfMonth()));
+                        vbox.setSpacing(5);
+                        sPane.setStyle("-fx-background-color: transparent");
+                        sPane.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
+                            label.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
+                            date.setValue(LocalDate.of(date.getValue().getYear(), date.getValue().getMonthValue(), Integer.parseInt(label.getText())));
+                        });
+                        if (label.getText().equals(String.valueOf(today.getDayOfMonth()))) {
+                            labelDate.setStyle("-fx-background-color: #FFFF00; -fx-background-radius: 10; -fx-padding: 5");
+                        }
+                        Button btn = new Button();
+                        btn.setStyle("-fx-background-color: #e8a7b1; -fx-cursor: hand");
+                        btn.setText(reminder.getRemindername());
+                        btn.setId(String.valueOf(reminder.getIdreminder()));
+                        btn.setOnAction(test -> {
+                            try {
+                                getReminder(btn);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
+                        vbox.getChildren().add(btn);
+                        calendarView4.add(sPane,cols,rows);
+                    }
+                }
+            }
+            calendarView.getChildren().addAll(calendarView4.getChildren());
+        }
     }
-    public void getData(Button btn) throws IOException {
+
+    public void getReminder(Button btn) throws IOException {
+        Reminder reminder = rDao.getReminderDetails(Integer.parseInt(btn.getId()));
+        ButtonType ok = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType update = new ButtonType("Update");
+        ButtonType delete = new ButtonType("Delete");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ok, update, delete);
+        String reminderName = reminder.getRemindername();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateStart = LocalDateTime.parse(reminder.getRemindertime(), formatter);
+        LocalTime timeStart = dateStart.toLocalTime();
+        String details = dateStart.getDayOfMonth() + " " + dateStart.getMonth() + " " + dateStart.getYear() + " " + timeStart;
+        alert.setTitle("Reminder Details");
+        alert.setHeaderText(reminderName);
+        alert.setContentText(details);
+        alert.showAndWait();
+        if (alert.getResult() == update) {
+            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-reminder-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+            ReminderController rController = fxmlLoader.getController();
+            rController.setDate(date.getValue());
+            rController.setData("Update Reminder", reminder, timeStart);
+            stage = new Stage();
+            stage.setTitle("Update Reminder");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            changeDate();
+        } else if (alert.getResult() == delete) {
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure want to delete this reminder?", ButtonType.OK, ButtonType.CANCEL);
+            confirm.showAndWait();
+            if (confirm.getResult() == ButtonType.OK) {
+                rDao.deleteData(reminder);
+            }
+            changeDate();
+        }
+    }
+
+    public void getEvent(Button btn) throws IOException {
         Event event = eDao.getEventDetails(Integer.parseInt(btn.getId()));
         ButtonType ok = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
         ButtonType update = new ButtonType("Update");
@@ -162,8 +299,6 @@ public class MainController {
         LocalDateTime dateStop = LocalDateTime.parse(event.getEventtimestop(), formatter);
         LocalTime timeStart = dateStart.toLocalTime();
         LocalTime timeStop = dateStop.toLocalTime();
-        System.out.println(dateStart);
-        System.out.println(dateStop);
         String details = dateStart.getDayOfMonth() + " " + dateStart.getMonth() + " " + dateStart.getYear() + " " + timeStart + " - " +
                 dateStop.getDayOfMonth() + " " + dateStop.getMonth() + " " + dateStop.getYear() + " " + timeStop + "\n" +
                 "Category: " + event.getCategory().getCategoryname();
@@ -174,7 +309,7 @@ public class MainController {
         if (alert.getResult() == update) {
             fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-event-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
-            AddEventController aeController = fxmlLoader.getController();
+            EventController aeController = fxmlLoader.getController();
             aeController.setDate(date.getValue());
             aeController.setData("Update Event", event, timeStart, timeStop);
             stage = new Stage();
@@ -184,8 +319,49 @@ public class MainController {
             stage.showAndWait();
             changeDate();
         } else if (alert.getResult() == trash) {
-            Event e = new Event(event.getIdevent(), event.getEventname(), event.getEventtimestart(), event.getEventtimestop(), 1, event.getCategory(), event.getUsername());
-            eDao.updateData(e);
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure want to move to trash?", ButtonType.OK, ButtonType.CANCEL);
+            confirm.showAndWait();
+            if (confirm.getResult() == ButtonType.OK) {
+                Event e = new Event(event.getIdevent(), event.getEventname(), event.getEventtimestart(), event.getEventtimestop(), 1, event.getCategory(), event.getUsername());
+                eDao.updateData(e);
+            }
+            changeDate();
+        }
+    }
+    public void getTask(Button btn) throws IOException {
+        Task task = tDao.getTaskDetails(Integer.parseInt(btn.getId()));
+        ButtonType ok = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType update = new ButtonType("Update");
+        ButtonType delete = new ButtonType("Delete");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ok, update, delete);
+        String taskName = task.getTaskname();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateStart = LocalDateTime.parse(task.getTasktime(), formatter);
+        LocalTime timeStart = dateStart.toLocalTime();
+        String details = dateStart.getDayOfMonth() + " " + dateStart.getMonth() + " " + dateStart.getYear() + " " + timeStart + "\n" +
+                "Category: " + task.getCategory().getCategoryname();
+        alert.setTitle("Task Details");
+        alert.setHeaderText(taskName);
+        alert.setContentText(details);
+        alert.showAndWait();
+        if (alert.getResult() == update) {
+            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-task-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+            TaskController tController = fxmlLoader.getController();
+            tController.setDate(date.getValue());
+            tController.setData("Update Task", task, timeStart);
+            stage = new Stage();
+            stage.setTitle("Update Task");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            changeDate();
+        } else if (alert.getResult() == delete) {
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure want to delete this task?", ButtonType.OK, ButtonType.CANCEL);
+            confirm.showAndWait();
+            if (confirm.getResult() == ButtonType.OK) {
+                tDao.deleteData(task);
+            }
             changeDate();
         }
     }
@@ -193,25 +369,42 @@ public class MainController {
         LocalDate now = LocalDate.now();
         date.setValue(now);
     }
-    public void addReminder(){
-        System.out.println("itil");
-    }
-
-    public void addTask(){
-        System.out.println("Alek Jancok");
-    }
 
     public void removeGridPane() {
         ObservableList<Node> children = calendarView.getChildren();
         children.removeIf(node -> node instanceof ScrollPane);
     }
-    public void showAddEvent() throws IOException {
+    public void showEvent() throws IOException {
         fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-event-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 300);
-        AddEventController aeController = fxmlLoader.getController();
-        aeController.setDate(date.getValue());
+        EventController eController = fxmlLoader.getController();
+        eController.setDate(date.getValue());
         stage = new Stage();
         stage.setTitle("Add Event");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+        changeDate();
+    }
+    public void showTask() throws IOException {
+        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-task-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+        TaskController tController = fxmlLoader.getController();
+        tController.setDate(date.getValue());
+        stage = new Stage();
+        stage.setTitle("Add Task");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+        changeDate();
+    }
+    public void showReminder() throws IOException {
+        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-reminder-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+        ReminderController rController = fxmlLoader.getController();
+        rController.setDate(date.getValue());
+        stage = new Stage();
+        stage.setTitle("Add Reminder");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
@@ -227,4 +420,5 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

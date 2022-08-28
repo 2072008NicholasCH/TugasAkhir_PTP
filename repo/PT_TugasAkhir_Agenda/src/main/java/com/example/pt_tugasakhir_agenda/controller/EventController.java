@@ -4,6 +4,7 @@ import com.example.pt_tugasakhir_agenda.dao.CategoryDao;
 import com.example.pt_tugasakhir_agenda.dao.EventDao;
 import com.example.pt_tugasakhir_agenda.model.Category;
 import com.example.pt_tugasakhir_agenda.model.Event;
+import com.example.pt_tugasakhir_agenda.model.Task;
 import com.example.pt_tugasakhir_agenda.model.User;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class AddEventController {
+public class EventController {
     @FXML
     private TextField txtEventName;
     @FXML

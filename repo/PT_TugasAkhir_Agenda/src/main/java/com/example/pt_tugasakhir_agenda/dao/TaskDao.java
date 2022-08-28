@@ -22,7 +22,7 @@ public class TaskDao implements DaoInterface<Task>{
         tList = FXCollections.observableArrayList();
         conn = MyConnection.getConnection();
         PreparedStatement ps;
-        String query = "SELECT t.*, c.*, u.* FROM task t JOIN category c ON t.Category_idCategory = c.idCategory JOIN user u ON t.user_userName = u.userName;";
+        String query = "SELECT t.*, c.*, u.* FROM task t JOIN category c ON t.Category_idCategory = c.idCategory JOIN user u ON t.user_userName = u.userName ;";
         try {
             ps = conn.prepareStatement(query);
             ResultSet result = ps.executeQuery();
@@ -47,6 +47,68 @@ public class TaskDao implements DaoInterface<Task>{
             throw new RuntimeException(e);
         }
         return tList;
+    }
+    public ObservableList<Task> getTaskDate(int month, int year) {
+        tList = FXCollections.observableArrayList();
+        conn = MyConnection.getConnection();
+        PreparedStatement ps;
+        String query = "SELECT t.*, c.*, u.* FROM task t JOIN category c ON t.Category_idCategory = c.idCategory JOIN user u ON t.user_userName = u.userName WHERE MONTH(t.taskTime) = ? AND YEAR(t.taskTime) = ? ;";
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, month);
+            ps.setInt(2, year);
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                int idTask = result.getInt("idTask");
+                String taskName = result.getString("taskName");
+                String taskStart = result.getString("taskTime");
+
+                int idCategory = result.getInt("Category_idCategory");
+                String categoryName = result.getString("categoryName");
+
+                String username = result.getString("userName");
+                String password = result.getString("userPassword");
+
+                Category c = new Category(idCategory, categoryName);
+                User u = new User(username, password);
+                Task t = new Task(idTask, taskName, taskStart, c, u);
+
+                tList.add(t);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return tList;
+    }
+    public Task getTaskDetails(int id) {
+        conn = MyConnection.getConnection();
+        PreparedStatement ps;
+        String query = "SELECT t.*, c.*, u.* FROM task t JOIN category c ON t.Category_idCategory = c.idCategory JOIN user u ON t.user_userName = u.userName WHERE idTask = ? ";
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                int idTask = result.getInt("idTask");
+                String taskName = result.getString("taskName");
+                String taskStart = result.getString("taskTime");
+
+                int idCategory = result.getInt("Category_idCategory");
+                String categoryName = result.getString("categoryName");
+
+                String username = result.getString("userName");
+                String password = result.getString("userPassword");
+
+                Category c = new Category(idCategory, categoryName);
+                User u = new User(username, password);
+                Task t = new Task(idTask, taskName, taskStart, c, u);
+                return t;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+
     }
 
     @Override

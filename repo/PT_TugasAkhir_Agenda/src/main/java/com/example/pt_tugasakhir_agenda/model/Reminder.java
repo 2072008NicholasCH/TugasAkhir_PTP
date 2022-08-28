@@ -2,7 +2,7 @@ package com.example.pt_tugasakhir_agenda.model;
 
 public class Reminder {
     private int idreminder;
-    private String remidername;
+    private String remindername;
     private String remindertime;
     private User username;
 
@@ -14,12 +14,12 @@ public class Reminder {
         this.idreminder = idreminder;
     }
 
-    public String getRemidername() {
-        return remidername;
+    public String getRemindername() {
+        return remindername;
     }
 
-    public void setRemidername(String remidername) {
-        this.remidername = remidername;
+    public void setRemindername(String remindername) {
+        this.remindername = remindername;
     }
 
     public String getRemindertime() {
@@ -38,9 +38,9 @@ public class Reminder {
         this.username = username;
     }
 
-    public Reminder(int idreminder, String remidername, String remindertime, User username) {
+    public Reminder(int idreminder, String remindername, String remindertime, User username) {
         this.idreminder = idreminder;
-        this.remidername = remidername;
+        this.remindername = remindername;
         this.remindertime = remindertime;
         this.username = username;
     }

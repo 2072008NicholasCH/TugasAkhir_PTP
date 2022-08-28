@@ -266,7 +266,7 @@ public class MainController {
         alert.setContentText(details);
         alert.showAndWait();
         if (alert.getResult() == update) {
-            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-reminder-view.fxml"));
+            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("reminder-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             ReminderController rController = fxmlLoader.getController();
             rController.setDate(date.getValue());
@@ -307,7 +307,7 @@ public class MainController {
         alert.setContentText(details);
         alert.showAndWait();
         if (alert.getResult() == update) {
-            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-event-view.fxml"));
+            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("event-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             EventController aeController = fxmlLoader.getController();
             aeController.setDate(date.getValue());
@@ -345,7 +345,7 @@ public class MainController {
         alert.setContentText(details);
         alert.showAndWait();
         if (alert.getResult() == update) {
-            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-task-view.fxml"));
+            fxmlLoader = new FXMLLoader(MainApplication.class.getResource("task-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 300);
             TaskController tController = fxmlLoader.getController();
             tController.setDate(date.getValue());
@@ -369,13 +369,22 @@ public class MainController {
         LocalDate now = LocalDate.now();
         date.setValue(now);
     }
-
     public void removeGridPane() {
         ObservableList<Node> children = calendarView.getChildren();
         children.removeIf(node -> node instanceof ScrollPane);
     }
+    public void showTrash() throws IOException {
+        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("trash-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        stage = new Stage();
+        stage.setTitle("Trash");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+        changeDate();
+    }
     public void showEvent() throws IOException {
-        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-event-view.fxml"));
+        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("event-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 300);
         EventController eController = fxmlLoader.getController();
         eController.setDate(date.getValue());
@@ -387,7 +396,7 @@ public class MainController {
         changeDate();
     }
     public void showTask() throws IOException {
-        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-task-view.fxml"));
+        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("task-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 300);
         TaskController tController = fxmlLoader.getController();
         tController.setDate(date.getValue());
@@ -399,7 +408,7 @@ public class MainController {
         changeDate();
     }
     public void showReminder() throws IOException {
-        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("add-reminder-view.fxml"));
+        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("reminder-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 300);
         ReminderController rController = fxmlLoader.getController();
         rController.setDate(date.getValue());
@@ -411,7 +420,7 @@ public class MainController {
         changeDate();
     }
     public void showCategory() throws IOException {
-        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("category.fxml"));
+        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("category-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage = new Stage();
         stage.setTitle("Category Management");

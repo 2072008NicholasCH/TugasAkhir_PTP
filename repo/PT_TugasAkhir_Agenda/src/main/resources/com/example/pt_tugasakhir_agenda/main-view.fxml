@@ -104,7 +104,7 @@
             </MenuBar>
             <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" style="-fx-background-color: #d9dbbc;" text="Trash">
+                  <Button mnemonicParsing="false" onAction="#showTrash" prefHeight="38.0" prefWidth="93.0" style="-fx-background-color: #d9dbbc; -fx-cursor: hand;" text="Trash">
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>

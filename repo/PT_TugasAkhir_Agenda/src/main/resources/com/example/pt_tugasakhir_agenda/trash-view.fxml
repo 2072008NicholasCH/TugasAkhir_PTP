@@ -6,13 +6,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pt_tugasakhir_agenda.controller.TrashController">
    <top>
-      <VBox alignment="TOP_CENTER" prefHeight="53.0" prefWidth="600.0" style="-fx-background-color: #d9dbbc;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="53.0" prefWidth="600.0" style="-fx-background-color: #d9dbbc;" BorderPane.alignment="CENTER">
          <children>
             <Label text="Trash">
                <font>
@@ -26,12 +26,12 @@
       </VBox>
    </top>
    <center>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbEvent" onMouseClicked="#getSelectedItem" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="142.0" text="Name" />
-          <TableColumn prefWidth="163.0" text="Start" />
-            <TableColumn prefWidth="158.0" text="Finish" />
-            <TableColumn prefWidth="136.0" text="Category" />
+          <TableColumn fx:id="nameCol" prefWidth="142.0" text="Name" />
+          <TableColumn fx:id="startCol" prefWidth="163.0" text="Start" />
+            <TableColumn fx:id="finishCol" prefWidth="174.4000244140625" text="Finish" />
+            <TableColumn fx:id="categoryCol" prefWidth="96.79995727539062" text="Category" />
         </columns>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" />
@@ -39,16 +39,14 @@
       </TableView>
    </center>
    <bottom>
-      <VBox alignment="TOP_RIGHT" prefHeight="49.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_RIGHT" prefHeight="42.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #d9dbbc;" text="Empty Trash" />
+            <Button mnemonicParsing="false" onAction="#restoreAll" style="-fx-background-color: #d9dbbc; -fx-cursor: hand;" text="Restore All" />
+            <Button mnemonicParsing="false" onAction="#emptyTrash" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Empty Trash" />
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <BorderPane.margin>
+         <padding>
             <Insets right="10.0" />
-         </BorderPane.margin>
-      </VBox>
+         </padding>
+      </HBox>
    </bottom>
 </BorderPane>

@@ -113,6 +113,38 @@ public class EventDao implements DaoInterface<Event> {
         }
         return eList;
     }
+    public ObservableList<Event> getTrashEvent(String user) {
+        eList = FXCollections.observableArrayList();
+        conn = MyConnection.getConnection();
+        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE e.user_userName = ? AND e.eventTrash = 1";
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1,user);
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                int idEvent = result.getInt("idEvent");
+                String eventName = result.getString("eventName");
+                String eventStart = result.getString("eventTimeStart");
+                String eventEnd = result.getString("eventTimeStop");
+                int eventTrash = result.getInt("eventTrash");
+
+                int idCategory = result.getInt("Category_idCategory");
+                String categoryName = result.getString("categoryName");
+
+                String username = result.getString("userName");
+                String password = result.getString("userPassword");
+
+                Category c = new Category(idCategory, categoryName);
+                User u = new User(username, password);
+                Event e = new Event(idEvent, eventName, eventStart, eventEnd, eventTrash, c, u);
+                eList.add(e);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return eList;
+    }
 
     @Override
     public int addData(Event data) {
@@ -172,7 +204,7 @@ public class EventDao implements DaoInterface<Event> {
         int result;
         try {
             ps = conn.prepareStatement(query);
-            ps.setInt(1,data.getIdevent());
+            ps.setInt(1, data.getIdevent());
             result = ps.executeUpdate();
             if (result > 0) {
                 System.out.println("delete event successfully");

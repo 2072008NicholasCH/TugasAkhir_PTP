@@ -48,15 +48,16 @@ public class TaskDao implements DaoInterface<Task>{
         }
         return tList;
     }
-    public ObservableList<Task> getTaskDate(int month, int year) {
+    public ObservableList<Task> getTaskDate(int month, int year, String user) {
         tList = FXCollections.observableArrayList();
         conn = MyConnection.getConnection();
         PreparedStatement ps;
-        String query = "SELECT t.*, c.*, u.* FROM task t JOIN category c ON t.Category_idCategory = c.idCategory JOIN user u ON t.user_userName = u.userName WHERE MONTH(t.taskTime) = ? AND YEAR(t.taskTime) = ? ;";
+        String query = "SELECT t.*, c.*, u.* FROM task t JOIN category c ON t.Category_idCategory = c.idCategory JOIN user u ON t.user_userName = u.userName WHERE MONTH(t.taskTime) = ? AND YEAR(t.taskTime) = ? AND t.user_userName = ?;";
         try {
             ps = conn.prepareStatement(query);
             ps.setInt(1, month);
             ps.setInt(2, year);
+            ps.setString(3, user);
             ResultSet result = ps.executeQuery();
             while (result.next()) {
                 int idTask = result.getInt("idTask");

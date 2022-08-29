@@ -80,15 +80,16 @@ public class EventDao implements DaoInterface<Event> {
         }
         return null;
     }
-    public ObservableList<Event> getEventDate(int month, int year) {
+    public ObservableList<Event> getEventDate(int month, int year, String user) {
         eList = FXCollections.observableArrayList();
         conn = MyConnection.getConnection();
-        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE MONTH(e.eventTimeStart) = ? AND YEAR(e.eventTimeStart) = ? AND e.eventTrash = 0";
+        String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE MONTH(e.eventTimeStart) = ? AND YEAR(e.eventTimeStart) = ? AND e.eventTrash = 0 AND e.user_userName = ?";
         PreparedStatement ps;
         try {
             ps = conn.prepareStatement(query);
             ps.setInt(1, month);
             ps.setInt(2, year);
+            ps.setString(3, user);
             ResultSet result = ps.executeQuery();
             while (result.next()) {
                 int idEvent = result.getInt("idEvent");

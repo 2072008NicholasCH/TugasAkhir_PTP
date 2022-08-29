@@ -4,13 +4,16 @@ import com.example.pt_tugasakhir_agenda.dao.CategoryDao;
 import com.example.pt_tugasakhir_agenda.dao.EventDao;
 import com.example.pt_tugasakhir_agenda.model.Category;
 import com.example.pt_tugasakhir_agenda.model.Event;
-import com.example.pt_tugasakhir_agenda.model.Task;
 import com.example.pt_tugasakhir_agenda.model.User;
+import com.google.gson.Gson;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -34,13 +37,26 @@ public class EventController {
     private ObservableList<Category> cList;
     private CategoryDao cDao;
     private EventDao eDao;
-    private int id;
+    private User user;
     public void initialize() {
         cDao = new CategoryDao();
         eDao = new EventDao();
         cList = cDao.getData();
         cbCategory.setItems(cList);
         cbCategory.getSelectionModel().select(0);
+
+        BufferedReader reader;
+        String filename = "user/data.json";
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+            String json = reader.readLine();
+            Gson g = new Gson();
+            user = g.fromJson(json, User.class);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void setDate(LocalDate date) {
         dateStart.setValue(date);
@@ -59,7 +75,7 @@ public class EventController {
                     String dateTimeStart = dateStart.getValue() + " " + timeStart.getText();
                     String dateTimeFinish = dateFinish.getValue() + " " + timeFinish.getText();
 
-                    User u = new User("user1", "user");
+                    User u = new User(user.getUsername(), user.getPassword(), user.getName());
                     Event e = new Event(0, txtEventName.getText(), dateTimeStart, dateTimeFinish, 0, cbCategory.getSelectionModel().getSelectedItem(), u);
                     int res = eDao.addData(e);
                     if (res > 0) {
@@ -78,7 +94,7 @@ public class EventController {
                 String dateTimeStart = dateStart.getValue() + " " + timeStart.getText();
                 String dateTimeFinish = dateFinish.getValue() + " " + timeFinish.getText();
 
-                User u = new User("user1", "user");
+                User u = new User(user.getUsername(), user.getPassword(), user.getName());
                 Event e = new Event(0, txtEventName.getText(), dateTimeStart, dateTimeFinish, 0, cbCategory.getSelectionModel().getSelectedItem(), u);
                 int res = eDao.addData(e);
                 if (res > 0) {
@@ -123,7 +139,7 @@ public class EventController {
                     String dateTimeStart = dateStart.getValue() + " " + timeStart.getText();
                     String dateTimeFinish = dateFinish.getValue() + " " + timeFinish.getText();
 
-                    User u = new User("user1", "user");
+                    User u = new User(user.getUsername(), user.getPassword(), user.getName());
                     Event e = new Event(event.getIdevent(), txtEventName.getText(), dateTimeStart, dateTimeFinish, 0, cbCategory.getSelectionModel().getSelectedItem(), u);
                     int res = eDao.updateData(e);
                     if (res > 0) {
@@ -142,7 +158,7 @@ public class EventController {
                 String dateTimeStart = dateStart.getValue() + " " + timeStart.getText();
                 String dateTimeFinish = dateFinish.getValue() + " " + timeFinish.getText();
 
-                User u = new User("user1", "user");
+                User u = new User(user.getUsername(), user.getPassword(), user.getName());
                 Event e = new Event(event.getIdevent(), txtEventName.getText(), dateTimeStart, dateTimeFinish, 0, cbCategory.getSelectionModel().getSelectedItem(), u);
                 int res = eDao.updateData(e);
                 if (res > 0) {

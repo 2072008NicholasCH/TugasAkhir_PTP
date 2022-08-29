@@ -27,7 +27,8 @@ public class UserDao implements DaoInterface<User>{
             while (result.next()) {
                 String id = result.getString("userName");
                 String pass = result.getString("userPassword");
-                User c = new User(id, pass);
+                String name = result.getString("name");
+                User c = new User(id, pass,name);
                 uList.add(c);
             }
         } catch (SQLException e){
@@ -40,13 +41,14 @@ public class UserDao implements DaoInterface<User>{
     @Override
     public int addData(User data) {
         conn = MyConnection.getConnection();
-        String query = "INSERT INTO User(userName, userPassword) VALUES (?, ?);";
+        String query = "INSERT INTO User(userName, userPassword, name) VALUES (?, ?, ?);";
         PreparedStatement ps;
         int result;
         try {
             ps = conn.prepareStatement(query);
             ps.setString(1, data.getUsername());
             ps.setString(2, data.getPassword());
+            ps.setString(3, data.getName());
             result = ps.executeUpdate();
             if (result > 0) {
                 System.out.println("add user successfully");
@@ -96,7 +98,6 @@ public class UserDao implements DaoInterface<User>{
         return result;
     }
     public User getUser(User user) {
-        User c;
         conn = MyConnection.getConnection();
         String query = "SELECT * FROM User WHERE userName = ? AND userPassword = ?;";
         PreparedStatement ps;
@@ -108,9 +109,29 @@ public class UserDao implements DaoInterface<User>{
             while (result.next()) {
                 String id = result.getString("userName");
                 String pass = result.getString("userPassword");
-                c = new User(id, pass);
+                String name = result.getString("name");
+                User c = new User(id, pass, name);
+                return c;
             }
-            return c;
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+    public User checkUser(User user) {
+        conn = MyConnection.getConnection();
+        String query = "SELECT * FROM User WHERE userName = ?";
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1,user.getUsername());
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                String id = result.getString("userName");
+                String pass = result.getString("userPassword");
+                User c = new User(id, pass);
+                return c;
+            }
         } catch (SQLException e){
             throw new RuntimeException(e);
         }

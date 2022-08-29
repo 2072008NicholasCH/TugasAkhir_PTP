@@ -41,15 +41,16 @@ public class ReminderDao implements DaoInterface<Reminder>{
 
         return rList;
     }
-    public ObservableList<Reminder> getReminderDate(int month, int year) {
+    public ObservableList<Reminder> getReminderDate(int month, int year, String user) {
         rList = FXCollections.observableArrayList();
         conn = MyConnection.getConnection();
-        String query = "SELECT r.*, u.* FROM reminder r JOIN user u ON r.user_userName = u.userName WHERE MONTH(r.reminderTime) = ? AND YEAR(r.reminderTime) = ?;";
+        String query = "SELECT r.*, u.* FROM reminder r JOIN user u ON r.user_userName = u.userName WHERE MONTH(r.reminderTime) = ? AND YEAR(r.reminderTime) = ? AND r.user_userName = ?;";
         PreparedStatement ps;
         try {
             ps = conn.prepareStatement(query);
             ps.setInt(1, month);
             ps.setInt(2, year);
+            ps.setString(3, user);
             ResultSet result = ps.executeQuery();
             while (result.next()) {
                 int idRemind = result.getInt("idReminder");

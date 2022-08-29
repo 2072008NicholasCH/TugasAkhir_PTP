@@ -4,10 +4,15 @@ import com.example.pt_tugasakhir_agenda.dao.ReminderDao;
 import com.example.pt_tugasakhir_agenda.model.Reminder;
 import com.example.pt_tugasakhir_agenda.model.Task;
 import com.example.pt_tugasakhir_agenda.model.User;
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -23,14 +28,28 @@ public class ReminderController {
     @FXML
     private Button btnReminder;
     private ReminderDao rDao;
+    private User user;
 
     public void initialize() {
         rDao = new ReminderDao();
+
+        BufferedReader reader;
+        String filename = "user/data.json";
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+            String json = reader.readLine();
+            Gson g = new Gson();
+            user = g.fromJson(json, User.class);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void addReminder() {
         String dateTime = dateReminder.getValue() + " " + timeReminder.getText();
 
-        User u = new User("user1", "user");
+        User u = new User(user.getUsername(), user.getPassword(), user.getName());
         Reminder r = new Reminder(0, txtReminderName.getText(), dateTime, u);
         int res = rDao.addData(r);
         if (res > 0) {
@@ -45,7 +64,7 @@ public class ReminderController {
     public void updateReminder(Reminder reminder) {
         String dateTime = dateReminder.getValue() + " " + timeReminder.getText();
 
-        User u = new User("user1", "user");
+        User u = new User(user.getUsername(), user.getPassword(), user.getName());
         Reminder r = new Reminder(reminder.getIdreminder(), txtReminderName.getText(), dateTime, u);
         int res = rDao.updateData(r);
         if (res > 0) {

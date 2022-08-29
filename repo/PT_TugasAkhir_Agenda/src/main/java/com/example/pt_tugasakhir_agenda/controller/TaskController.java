@@ -7,11 +7,16 @@ import com.example.pt_tugasakhir_agenda.model.Category;
 import com.example.pt_tugasakhir_agenda.model.Event;
 import com.example.pt_tugasakhir_agenda.model.User;
 import com.example.pt_tugasakhir_agenda.model.Task;
+import com.google.gson.Gson;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -31,6 +36,7 @@ public class TaskController {
     private CategoryDao cDao;
     private TaskDao tDao;
     private ObservableList<Category> cList;
+    private User user;
 
     public void initialize() {
         cDao = new CategoryDao();
@@ -38,11 +44,24 @@ public class TaskController {
         cList = cDao.getData();
         cbCategory.setItems(cList);
         cbCategory.getSelectionModel().select(0);
+
+        BufferedReader reader;
+        String filename = "user/data.json";
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+            String json = reader.readLine();
+            Gson g = new Gson();
+            user = g.fromJson(json, User.class);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void addTask() {
         String dateTime = dateTask.getValue() + " " + timeTask.getText();
 
-        User u = new User("user1", "user");
+        User u = new User(user.getUsername(), user.getPassword(), user.getName());
         Task t = new Task(0, txtTaskName.getText(), dateTime, cbCategory.getSelectionModel().getSelectedItem(), u);
         int res = tDao.addData(t);
         if (res > 0) {
@@ -57,7 +76,7 @@ public class TaskController {
     public void updateTask(Task task) {
         String dateTime = dateTask.getValue() + " " + timeTask.getText();
 
-        User u = new User("user1", "user");
+        User u = new User(user.getUsername(), user.getPassword(), user.getName());
         Task t = new Task(task.getIdtask(), txtTaskName.getText(), dateTime, cbCategory.getSelectionModel().getSelectedItem(), u);
         int res = tDao.updateData(t);
         if (res > 0) {

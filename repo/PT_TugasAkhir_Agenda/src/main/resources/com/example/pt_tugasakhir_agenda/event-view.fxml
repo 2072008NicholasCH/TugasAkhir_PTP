@@ -6,6 +6,10 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -55,21 +59,10 @@
          </BorderPane.margin>
       </GridPane>
    </center>
-   <top>
-      <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="491.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="TOP_CENTER" prefHeight="37.0" prefWidth="600.0" style="-fx-background-color: #86c5db;" text="Event">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-   </top>
    <bottom>
-      <VBox alignment="TOP_CENTER" prefHeight="83.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="45.0" prefWidth="496.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnEvent" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#addEvent" prefHeight="38.0" prefWidth="485.0" style="-fx-background-color: #86c5db; -fx-cursor: hand;" text="Add Event">
+            <Button fx:id="btnEvent" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#addEvent" prefHeight="22.0" prefWidth="486.0" style="-fx-background-color: #86c5db; -fx-cursor: hand;" text="Add Event">
                <font>
                   <Font size="16.0" />
                </font>
@@ -77,15 +70,29 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnCancel"  alignment="TOP_CENTER" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel" prefHeight="38.0" prefWidth="485.0" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" />
          </BorderPane.margin>
       </VBox>
    </bottom>
+   <top>
+      <AnchorPane prefHeight="30.0" prefWidth="547.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="TOP_CENTER" prefHeight="37.0" prefWidth="495.0" style="-fx-background-color: #86c5db;" text="Event">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="btnClose" fitHeight="29.0" fitWidth="28.0" layoutX="461.0" layoutY="4.0" onMouseClicked="#cancel" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@../../../attribute/icon/close.png" />
+               </image>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

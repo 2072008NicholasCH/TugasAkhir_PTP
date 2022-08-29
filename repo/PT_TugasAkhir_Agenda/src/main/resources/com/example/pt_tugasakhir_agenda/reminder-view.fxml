@@ -5,6 +5,10 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,7 +19,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pt_tugasakhir_agenda.controller.ReminderController">
    <center>
-      <GridPane alignment="TOP_CENTER" prefHeight="226.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <GridPane alignment="TOP_CENTER" prefHeight="186.0" prefWidth="475.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="135.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="336.0" />
@@ -27,7 +31,7 @@
         </rowConstraints>
          <children>
             <Label text="Reminder Name:" />
-            <TextField fx:id="txtReminderName" promptText="Reminder Name" GridPane.columnIndex="1" />
+            <TextField fx:id="txtReminderName" prefWidth="319.0" promptText="Reminder Name" GridPane.columnIndex="1" />
             <Label text="Reminder Date:" GridPane.rowIndex="1" />
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
@@ -42,21 +46,10 @@
          </BorderPane.margin>
       </GridPane>
    </center>
-   <top>
-      <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="491.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="TOP_CENTER" prefHeight="37.0" prefWidth="600.0" style="-fx-background-color: #e8a7b1;" text="Reminder">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-   </top>
    <bottom>
       <VBox alignment="TOP_CENTER" prefHeight="74.0" prefWidth="491.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnReminder" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#addReminder" prefHeight="16.0" prefWidth="471.0" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Add Reminder">
+            <Button fx:id="btnReminder" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#addReminder" prefHeight="38.0" prefWidth="481.0" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Add Reminder">
                <font>
                   <Font size="16.0" />
                </font>
@@ -64,15 +57,29 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnCancel" alignment="TOP_CENTER" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel" prefHeight="16.0" prefWidth="471.0" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" />
          </BorderPane.margin>
       </VBox>
    </bottom>
+   <top>
+      <AnchorPane prefHeight="30.0" prefWidth="547.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="TOP_CENTER" layoutX="1.0" prefHeight="37.0" prefWidth="495.0" style="-fx-background-color: #e8a7b1;" text="Reminder">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="btnClose" fitHeight="29.0" fitWidth="28.0" layoutX="461.0" layoutY="4.0" onMouseClicked="#cancel" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@../../../attribute/icon/close.png" />
+               </image>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

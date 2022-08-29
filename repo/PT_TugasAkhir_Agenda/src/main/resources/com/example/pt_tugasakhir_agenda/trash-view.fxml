@@ -43,7 +43,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#restoreAll" style="-fx-background-color: #d9dbbc; -fx-cursor: hand;" text="Restore All" />
             <Button mnemonicParsing="false" onAction="#emptyTrash" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Empty Trash" />
-            <Button fx:id="btnCancel" onMouseClicked="#cancel" layoutX="514.0" layoutY="10.0" mnemonicParsing="false" onAction="#emptyTrash" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel" />
+            <Button fx:id="btnCancel" layoutX="514.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel" onMouseClicked="#cancel" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel" />
          </children>
          <padding>
             <Insets right="10.0" />

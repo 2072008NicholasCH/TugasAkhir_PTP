@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23b4604d-330c-40e1-b865-14d4895848b6" name="Changes" comment="" />
+    <list default="true" id="2df6b19f-9c80-4828-8133-b57361372fa4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/encryption/enkripsi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/pt_tugasakhir_agenda/user-register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pt_tugasakhir_agenda/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/pt_tugasakhir_agenda/user-login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/pt_tugasakhir_agenda/user-login.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +51,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/ASUS/Documents/SA 2/Pemrograman Terapan/PT_TugasAkhir_Agenda",
+    "last_opened_file_path": "C:/Users/Juan Sterling/Documents/Kuliah/Sem Antara/PBO2/Soal UTS PTerapan",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -52,6 +59,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Juan Sterling\Documents\Kuliah\Sem Antara\PBO2\TugasAkhir_PTP\repo\PT_TugasAkhir_Agenda\src\main\resources\com\example\pt_tugasakhir_agenda" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Nicholas CH\Desktop\TugasAkhir_PTP\repo\PT_TugasAkhir_Agenda\src\main\resources" />
     </key>
@@ -97,7 +107,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="23b4604d-330c-40e1-b865-14d4895848b6" name="Changes" comment="" />
+      <changelist id="2df6b19f-9c80-4828-8133-b57361372fa4" name="Changes" comment="" />
       <created>1660812460053</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -128,6 +138,7 @@
       <workItem from="1661750020777" duration="916000" />
       <workItem from="1661748331638" duration="1602000" />
       <workItem from="1661754178344" duration="538000" />
+      <workItem from="1661756679206" duration="3193000" />
     </task>
     <servers />
   </component>

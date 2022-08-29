@@ -95,4 +95,25 @@ public class UserDao implements DaoInterface<User>{
         }
         return result;
     }
+    public User getUser(User user) {
+        User c;
+        conn = MyConnection.getConnection();
+        String query = "SELECT * FROM User WHERE userName = ? AND userPassword = ?;";
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1,user.getUsername());
+            ps.setString(2,user.getPassword());
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                String id = result.getString("userName");
+                String pass = result.getString("userPassword");
+                c = new User(id, pass);
+            }
+            return c;
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 }

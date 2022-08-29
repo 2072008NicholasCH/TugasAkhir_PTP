@@ -17,6 +17,8 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
@@ -32,6 +34,15 @@ import java.util.Iterator;
 
 public class MainController {
 
+    public ToggleButton tbEvent;
+    public ToggleButton tbRemind;
+    public ToggleButton tbTask;
+    public Button btnTrash;
+    public Button btnToday;
+    public ImageView imgTrash;
+    public ImageView imgEvent;
+    public ImageView imgReminder;
+    public ImageView imgTask;
     @FXML
     private Label lbYear;
     @FXML
@@ -40,8 +51,6 @@ public class MainController {
     private DatePicker date;
     @FXML
     private GridPane calendarView;
-    @FXML
-    private Button today;
     private EventDao eDao;
     private TaskDao tDao;
     private ReminderDao rDao;
@@ -57,7 +66,7 @@ public class MainController {
         rDao = new ReminderDao();
         LocalDate now = LocalDate.now();
         date.setValue(now);
-        today.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
+        btnToday.addEventHandler(MouseEvent.MOUSE_CLICKED, e ->{
             setToday();
         });
         changeDate();

@@ -23,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -388,6 +389,7 @@ public class MainController {
         stage = new Stage();
         stage.setTitle("Trash");
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
         changeDate();
@@ -400,6 +402,7 @@ public class MainController {
         stage = new Stage();
         stage.setTitle("Add Event");
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
         changeDate();
@@ -412,6 +415,7 @@ public class MainController {
         stage = new Stage();
         stage.setTitle("Add Task");
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
         changeDate();
@@ -424,6 +428,7 @@ public class MainController {
         stage = new Stage();
         stage.setTitle("Add Reminder");
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
         changeDate();
@@ -434,6 +439,7 @@ public class MainController {
         stage = new Stage();
         stage.setTitle("Category Management");
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.show();

@@ -9,11 +9,14 @@ import com.example.pt_tugasakhir_agenda.model.User;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class EventController {
+    public Button btnCancel;
     @FXML
     private TextField txtEventName;
     @FXML
@@ -155,5 +158,12 @@ public class EventController {
                 alert.showAndWait();
             }
         }
+    }
+
+    public void cancel(MouseEvent mouseEvent) {
+        txtEventName.clear();
+        timeFinish.clear();
+        timeStart.clear();
+        txtEventName.getScene().getWindow().hide();
     }
 }

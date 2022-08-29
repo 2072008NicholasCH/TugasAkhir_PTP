@@ -10,12 +10,14 @@ import com.example.pt_tugasakhir_agenda.model.Task;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class TaskController {
+    public Button btnCancel;
     @FXML
     private TextField txtTaskName;
     @FXML
@@ -82,5 +84,11 @@ public class TaskController {
         dateTask.setValue(startDate);
         timeTask.setText(String.valueOf(timeStart));
         cbCategory.setValue(task.getCategory());
+    }
+
+    public void cancel(MouseEvent mouseEvent) {
+        txtTaskName.clear();
+        timeTask.clear();
+        txtTaskName.getScene().getWindow().hide();
     }
 }

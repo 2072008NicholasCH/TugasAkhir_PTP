@@ -6,12 +6,14 @@ import com.example.pt_tugasakhir_agenda.model.Task;
 import com.example.pt_tugasakhir_agenda.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class ReminderController {
+    public Button btnCancel;
     @FXML
     private TextField txtReminderName;
     @FXML
@@ -69,5 +71,11 @@ public class ReminderController {
         LocalDate startDate = LocalDate.parse(reminder.getRemindertime(), formatter);
         dateReminder.setValue(startDate);
         timeReminder.setText(String.valueOf(timeStart));
+    }
+
+    public void cancel(MouseEvent mouseEvent) {
+        txtReminderName.clear();
+        timeReminder.clear();
+        txtReminderName.getScene().getWindow().hide();
     }
 }

@@ -50,16 +50,13 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.general"
   }
-<<<<<<< Updated upstream
 }]]></component>
-=======
-}</component>
+}</project>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Nicholas CH\Desktop\TugasAkhir_PTP\repo\PT_TugasAkhir_Agenda\src\main\resources" />
     </key>
   </component>
->>>>>>> Stashed changes
   <component name="RunManager" selected="Application.MainApplication">
     <configuration name="CalendarApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.pt_tugasakhir_agenda.CalendarApp" />
@@ -128,12 +125,9 @@
       <workItem from="1661596704867" duration="16624000" />
       <workItem from="1661670559979" duration="25375000" />
       <workItem from="1661738357059" duration="3498000" />
-<<<<<<< Updated upstream
       <workItem from="1661748331638" duration="622000" />
       <workItem from="1661750020777" duration="916000" />
-=======
       <workItem from="1661748331638" duration="1602000" />
->>>>>>> Stashed changes
     </task>
     <servers />
   </component>

@@ -6,8 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class CategoryController {
+    public Button btnCancel;
     @FXML
     private TableView<Category> tbCategory;
     @FXML
@@ -84,5 +86,8 @@ public class CategoryController {
         btnDelete.setDisable(true);
         tbCategory.getSelectionModel().clearSelection();
         txtCategoryName.clear();
+    }
+
+    public void cancel(MouseEvent mouseEvent) {
     }
 }

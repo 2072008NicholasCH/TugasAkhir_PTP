@@ -7,8 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class TrashController {
+    public Button btnCancel;
     @FXML
     private TableView<Event> tbEvent;
     @FXML
@@ -92,5 +94,9 @@ public class TrashController {
             contextMenu.getItems().add(delete);
             tbEvent.setContextMenu(contextMenu);
         }
+    }
+
+    public void cancel(MouseEvent mouseEvent) {
+        tbEvent.getScene().getWindow().hide();
     }
 }

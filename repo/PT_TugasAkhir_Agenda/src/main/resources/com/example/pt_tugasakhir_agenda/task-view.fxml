@@ -68,7 +68,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnTask1" alignment="TOP_CENTER" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#addTask" prefHeight="16.0" prefWidth="471.0" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel">
+            <Button fx:id="btnCancel" onMouseClicked="#cancel" alignment="TOP_CENTER" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#addTask" prefHeight="16.0" prefWidth="471.0" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel">
                <font>
                   <Font size="16.0" />
                </font>

@@ -91,7 +91,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" />
          </BorderPane.margin>
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #db4855;" text="Cancel" />
+            <Button fx:id="btnCancel" onMouseClicked="#cancel" mnemonicParsing="false" style="-fx-background-color: #db4855;" text="Cancel" />
          </children>
       </VBox>
    </bottom>

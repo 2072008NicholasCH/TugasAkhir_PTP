@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pt_tugasakhir_agenda.controller.TrashController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pt_tugasakhir_agenda.controller.TrashController">
    <top>
       <VBox alignment="CENTER" prefHeight="53.0" prefWidth="600.0" style="-fx-background-color: #d9dbbc;" BorderPane.alignment="CENTER">
          <children>
@@ -43,6 +43,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#restoreAll" style="-fx-background-color: #d9dbbc; -fx-cursor: hand;" text="Restore All" />
             <Button mnemonicParsing="false" onAction="#emptyTrash" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Empty Trash" />
+            <Button layoutX="514.0" layoutY="10.0" mnemonicParsing="false" onAction="#emptyTrash" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel" />
          </children>
          <padding>
             <Insets right="10.0" />

@@ -109,111 +109,123 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0" spacing="10.0">
+            <GridPane prefHeight="45.0" prefWidth="1100.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="125.1999740600586" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="1011.5999908447266" minWidth="10.0" prefWidth="963.6000259399414" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <GridPane prefHeight="37.0" prefWidth="535.0">
-                    <columnConstraints>
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="135.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="128.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="137.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <Button fx:id="btnTrash" mnemonicParsing="false" onAction="#showTrash" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #d9dbbc; -fx-cursor: hand;" text="Trash">
+                     <graphic>
+                        <ImageView fx:id="imgTrash" fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../attribute/icon/trash.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0" spacing="10.0" GridPane.columnIndex="1">
                      <children>
-                        <Button fx:id="btnTrash" mnemonicParsing="false" onAction="#showTrash" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #d9dbbc; -fx-cursor: hand;" text="Trash">
-                           <graphic>
-                              <ImageView fx:id="imgTrash" fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../attribute/icon/trash.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <ToggleButton fx:id="tbEvent" mnemonicParsing="false" onAction="#showEvent" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #86c5db; -fx-cursor: hand;" text="Add Event" textAlignment="CENTER" GridPane.columnIndex="2">
-                           <graphic>
-                              <ImageView fx:id="imgEvent" fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../attribute/icon/tst2.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </ToggleButton>
-                        <ToggleButton fx:id="tbRemind" mnemonicParsing="false" onAction="#showReminder" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Add Reminder" textAlignment="CENTER" GridPane.columnIndex="3">
-                           <graphic>
-                              <ImageView fx:id="imgReminder" fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../attribute/icon/test2.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </ToggleButton>
-                        <ToggleButton fx:id="tbTask" mnemonicParsing="false" onAction="#showTask" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #c8c8c8; -fx-cursor: hand;" text="Add Task" textAlignment="CENTER" GridPane.columnIndex="4">
-                           <graphic>
-                              <ImageView fx:id="imgTask" fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../attribute/icon/task.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </ToggleButton>
-                     </children>
-                  </GridPane>
-                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="250.0" spacing="10.0">
-                     <children>
-                        <DatePicker fx:id="date" style="-fx-cursor: hand;" />
-                        <Button fx:id="btnToday" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #f4c076; -fx-cursor: hand;" text="Today" />
-                     </children>
-                  </HBox>
-                  <GridPane prefHeight="37.0" prefWidth="151.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.800048828125" minWidth="10.0" prefWidth="18.0" />
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="202.8000732421875" minWidth="10.0" prefWidth="115.0" />
-                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="83.199951171875" minWidth="10.0" prefWidth="18.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label onMouseClicked="#decreaseMonth" prefHeight="35.0" prefWidth="22.0" style="-fx-cursor: hand;" text="&lt;">
+                        <GridPane prefHeight="37.0" prefWidth="390.0">
+                          <columnConstraints>
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="135.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="128.600048828125" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="126.99995117187501" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <ToggleButton fx:id="tbEvent" mnemonicParsing="false" onAction="#showEvent" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #86c5db; -fx-cursor: hand;" text="Add Event" textAlignment="CENTER">
+                                 <graphic>
+                                    <ImageView fx:id="imgEvent" fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../attribute/icon/tst2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </ToggleButton>
+                              <ToggleButton fx:id="tbRemind" mnemonicParsing="false" onAction="#showReminder" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Add Reminder" textAlignment="CENTER" GridPane.columnIndex="1">
+                                 <graphic>
+                                    <ImageView fx:id="imgReminder" fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../attribute/icon/test2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </ToggleButton>
+                              <ToggleButton fx:id="tbTask" mnemonicParsing="false" onAction="#showTask" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #c8c8c8; -fx-cursor: hand;" text="Add Task" textAlignment="CENTER" GridPane.columnIndex="2">
+                                 <graphic>
+                                    <ImageView fx:id="imgTask" fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../attribute/icon/task.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </ToggleButton>
+                           </children>
+                        </GridPane>
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="250.0" spacing="10.0">
+                           <children>
+                              <DatePicker fx:id="date" style="-fx-cursor: hand;" />
+                              <Button fx:id="btnToday" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #f4c076; -fx-cursor: hand;" text="Today" />
+                           </children>
+                        </HBox>
+                        <GridPane prefHeight="37.0" prefWidth="151.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.800048828125" minWidth="10.0" prefWidth="18.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="202.8000732421875" minWidth="10.0" prefWidth="115.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="83.199951171875" minWidth="10.0" prefWidth="18.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label onMouseClicked="#decreaseMonth" prefHeight="35.0" prefWidth="22.0" style="-fx-cursor: hand;" text="&lt;">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbMonth" text="SEPTEMBER" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label onMouseClicked="#increaseMonth" style="-fx-cursor: hand;" text="&gt;" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label onMouseClicked="#decreaseYear" style="-fx-cursor: hand;" text="&lt;">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbMonth" text="SEPTEMBER" GridPane.columnIndex="1">
+                        <Label fx:id="lbYear" text="*Year*">
                            <font>
                               <Font size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
                         </Label>
-                        <Label onMouseClicked="#increaseMonth" style="-fx-cursor: hand;" text="&gt;" GridPane.columnIndex="2">
+                        <Label onMouseClicked="#increaseYear" style="-fx-cursor: hand;" text="&gt;">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
                      </children>
-                  </GridPane>
-                  <Label onMouseClicked="#decreaseYear" style="-fx-cursor: hand;" text="&lt;">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbYear" text="*Year*">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label onMouseClicked="#increaseYear" style="-fx-cursor: hand;" text="&gt;">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
+                  </HBox>
                </children>
-            </HBox>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </GridPane>
          </children>
       </VBox>
    </top>

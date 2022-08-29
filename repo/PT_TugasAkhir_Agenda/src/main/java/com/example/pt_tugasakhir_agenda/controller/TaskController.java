@@ -86,7 +86,7 @@ public class TaskController {
         cbCategory.setValue(task.getCategory());
     }
 
-    public void cancel(MouseEvent mouseEvent) {
+    public void cancel() {
         txtTaskName.clear();
         timeTask.clear();
         txtTaskName.getScene().getWindow().hide();

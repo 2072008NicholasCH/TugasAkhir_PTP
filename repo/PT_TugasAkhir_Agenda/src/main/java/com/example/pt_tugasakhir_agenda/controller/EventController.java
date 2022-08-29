@@ -160,7 +160,7 @@ public class EventController {
         }
     }
 
-    public void cancel(MouseEvent mouseEvent) {
+    public void cancel() {
         txtEventName.clear();
         timeFinish.clear();
         timeStart.clear();

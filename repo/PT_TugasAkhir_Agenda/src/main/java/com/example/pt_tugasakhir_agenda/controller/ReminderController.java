@@ -73,7 +73,7 @@ public class ReminderController {
         timeReminder.setText(String.valueOf(timeStart));
     }
 
-    public void cancel(MouseEvent mouseEvent) {
+    public void cancel() {
         txtReminderName.clear();
         timeReminder.clear();
         txtReminderName.getScene().getWindow().hide();

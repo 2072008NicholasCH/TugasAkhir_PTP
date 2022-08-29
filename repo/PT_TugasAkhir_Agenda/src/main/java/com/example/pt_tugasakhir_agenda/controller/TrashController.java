@@ -96,7 +96,7 @@ public class TrashController {
         }
     }
 
-    public void cancel(MouseEvent mouseEvent) {
+    public void cancel() {
         tbEvent.getScene().getWindow().hide();
     }
 }

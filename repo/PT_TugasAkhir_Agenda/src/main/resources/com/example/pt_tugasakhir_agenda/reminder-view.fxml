@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="238.0" prefWidth="491.0" style="-fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pt_tugasakhir_agenda.controller.ReminderController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pt_tugasakhir_agenda.controller.ReminderController">
    <center>
       <GridPane alignment="TOP_CENTER" prefHeight="226.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -64,7 +64,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnCancel" onMouseClicked="#cancel" alignment="TOP_CENTER" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#addReminder" prefHeight="16.0" prefWidth="471.0" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel">
+            <Button fx:id="btnCancel" alignment="TOP_CENTER" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel" prefHeight="16.0" prefWidth="471.0" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel">
                <font>
                   <Font size="16.0" />
                </font>

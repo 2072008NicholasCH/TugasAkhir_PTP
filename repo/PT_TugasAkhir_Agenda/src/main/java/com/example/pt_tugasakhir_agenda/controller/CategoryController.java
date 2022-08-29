@@ -88,6 +88,8 @@ public class CategoryController {
         txtCategoryName.clear();
     }
 
-    public void cancel(MouseEvent mouseEvent) {
+    public void cancel() {
+        txtCategoryName.clear();
+        txtCategoryName.getScene().getWindow().hide();
     }
 }

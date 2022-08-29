@@ -41,9 +41,9 @@
    <bottom>
       <HBox alignment="TOP_RIGHT" prefHeight="42.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#restoreAll" style="-fx-background-color: #d9dbbc; -fx-cursor: hand;" text="Restore All" />
-            <Button mnemonicParsing="false" onAction="#emptyTrash" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Empty Trash" />
-            <Button fx:id="btnCancel" layoutX="514.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel" onMouseClicked="#cancel" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#restoreAll" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #d9dbbc; -fx-cursor: hand;" text="Restore All" />
+            <Button mnemonicParsing="false" onAction="#emptyTrash" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #e8a7b1; -fx-cursor: hand;" text="Empty Trash" />
+            <Button fx:id="btnCancel" layoutX="514.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel" onMouseClicked="#cancel" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #db4855; -fx-cursor: hand;" text="Close" />
          </children>
          <padding>
             <Insets right="10.0" />

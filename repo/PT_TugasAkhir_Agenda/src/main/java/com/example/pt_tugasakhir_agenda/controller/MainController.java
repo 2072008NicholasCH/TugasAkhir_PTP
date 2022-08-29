@@ -284,6 +284,7 @@ public class MainController {
             stage = new Stage();
             stage.setTitle("Update Reminder");
             stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
             changeDate();
@@ -325,6 +326,7 @@ public class MainController {
             stage = new Stage();
             stage.setTitle("Update Event");
             stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
             changeDate();
@@ -363,6 +365,7 @@ public class MainController {
             stage = new Stage();
             stage.setTitle("Update Task");
             stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
             changeDate();

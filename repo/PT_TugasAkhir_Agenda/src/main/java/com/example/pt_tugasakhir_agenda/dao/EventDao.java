@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 
 public class EventDao implements DaoInterface<Event> {
     ObservableList<Event> eList;
@@ -114,14 +113,14 @@ public class EventDao implements DaoInterface<Event> {
         }
         return eList;
     }
-    public ObservableList<Event> getTrashEvent(String user) {
+    public ObservableList<Event> getTrashEvent(User user) {
         eList = FXCollections.observableArrayList();
         conn = MyConnection.getConnection();
         String query = "SELECT e.*, c.*, u.* FROM event e JOIN category c ON e.Category_idCategory = c.idCategory JOIN user u ON e.user_userName = u.userName WHERE e.user_userName = ? AND e.eventTrash = 1";
         PreparedStatement ps;
         try {
             ps = conn.prepareStatement(query);
-            ps.setString(1,user);
+            ps.setString(1,user.getUsername());
             ResultSet result = ps.executeQuery();
             while (result.next()) {
                 int idEvent = result.getInt("idEvent");

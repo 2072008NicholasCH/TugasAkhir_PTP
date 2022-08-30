@@ -1,17 +1,13 @@
 package com.example.pt_tugasakhir_agenda.controller;
 
-import com.example.pt_tugasakhir_agenda.MainApplication;
 import com.example.pt_tugasakhir_agenda.dao.UserDao;
 import com.example.pt_tugasakhir_agenda.model.User;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

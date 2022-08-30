@@ -1,17 +1,14 @@
 package com.example.pt_tugasakhir_agenda.controller;
 
 import com.example.pt_tugasakhir_agenda.dao.CategoryDao;
-import com.example.pt_tugasakhir_agenda.dao.EventDao;
 import com.example.pt_tugasakhir_agenda.dao.TaskDao;
 import com.example.pt_tugasakhir_agenda.model.Category;
-import com.example.pt_tugasakhir_agenda.model.Event;
 import com.example.pt_tugasakhir_agenda.model.User;
 import com.example.pt_tugasakhir_agenda.model.Task;
 import com.google.gson.Gson;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -22,7 +19,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class TaskController {
-    public Button btnCancel;
     @FXML
     private TextField txtTaskName;
     @FXML

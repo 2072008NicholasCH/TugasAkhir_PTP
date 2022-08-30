@@ -124,8 +124,8 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="About">
                   <items>
-                    <MenuItem fx:id="itmAbout" mnemonicParsing="false" onAction="#tentang" text="About Us" />
-                        <MenuItem fx:id="itmInfo" mnemonicParsing="false" onAction="#inpoh" text="Info" />
+                    <MenuItem fx:id="itmAbout" mnemonicParsing="false" onAction="#about" text="About Us" />
+                        <MenuItem fx:id="itmInfo" mnemonicParsing="false" onAction="#info" text="Info" />
                   </items>
                 </Menu>
               </menus>

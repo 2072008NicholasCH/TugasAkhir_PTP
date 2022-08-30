@@ -31,6 +31,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -617,6 +620,8 @@ public class MainController {
         confirm.showAndWait();
         if (confirm.getResult() == ButtonType.OK) {
             date.getScene().getWindow().hide();
+            Path p = Paths.get("user/data.json");
+            Files.delete(p);
             fxmlLoader = new FXMLLoader(MainApplication.class.getResource("user-login.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             stage = new Stage();
@@ -639,7 +644,7 @@ public class MainController {
         date.setValue(date.getValue().minusYears(1));
     }
 
-    public void tentang(ActionEvent actionEvent) throws IOException {
+    public void about(ActionEvent actionEvent) throws IOException {
         fxmlLoader = new FXMLLoader(MainApplication.class.getResource("about-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage = new Stage();
@@ -649,7 +654,7 @@ public class MainController {
         stage.showAndWait();
     }
 
-    public void inpoh(ActionEvent actionEvent) {
+    public void info(ActionEvent actionEvent) {
         Alert alertI = new Alert(Alert.AlertType.INFORMATION, "Agenda 1.0.1 Version 0.0.1 ", ButtonType.OK);
         alertI.setTitle("Version Info");
         alertI.setHeaderText("Agenda 1.0.1 Application");

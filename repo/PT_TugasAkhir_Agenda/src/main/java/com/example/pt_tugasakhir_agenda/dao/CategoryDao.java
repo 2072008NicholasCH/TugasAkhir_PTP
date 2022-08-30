@@ -4,7 +4,6 @@ import com.example.pt_tugasakhir_agenda.model.Category;
 import com.example.pt_tugasakhir_agenda.utility.MyConnection;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

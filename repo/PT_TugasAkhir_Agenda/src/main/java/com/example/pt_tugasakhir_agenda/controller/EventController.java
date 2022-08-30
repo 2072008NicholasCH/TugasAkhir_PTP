@@ -19,7 +19,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class EventController {
-    public Button btnCancel;
     @FXML
     private TextField txtEventName;
     @FXML

@@ -1,7 +1,6 @@
 package com.example.pt_tugasakhir_agenda.dao;
 
 import com.example.pt_tugasakhir_agenda.model.Category;
-import com.example.pt_tugasakhir_agenda.model.Event;
 import com.example.pt_tugasakhir_agenda.model.Task;
 import com.example.pt_tugasakhir_agenda.model.User;
 import com.example.pt_tugasakhir_agenda.utility.MyConnection;

@@ -2,12 +2,10 @@ package com.example.pt_tugasakhir_agenda.controller;
 
 import com.example.pt_tugasakhir_agenda.dao.ReminderDao;
 import com.example.pt_tugasakhir_agenda.model.Reminder;
-import com.example.pt_tugasakhir_agenda.model.Task;
 import com.example.pt_tugasakhir_agenda.model.User;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

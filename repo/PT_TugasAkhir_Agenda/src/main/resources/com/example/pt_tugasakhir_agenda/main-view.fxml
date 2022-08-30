@@ -120,7 +120,6 @@
                               <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator></MenuItem>
                         <MenuItem mnemonicParsing="false" onAction="#logOut" text="Log Out" />
-                        <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="About">

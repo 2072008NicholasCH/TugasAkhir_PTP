@@ -49,6 +49,8 @@ public class MainController {
     public ImageView imgEvent;
     public ImageView imgReminder;
     public ImageView imgTask;
+    public MenuItem itmAbout;
+    public MenuItem itmInfo;
     @FXML
     private Label lbYear;
     @FXML
@@ -637,4 +639,20 @@ public class MainController {
         date.setValue(date.getValue().minusYears(1));
     }
 
+    public void tentang(ActionEvent actionEvent) throws IOException {
+        fxmlLoader = new FXMLLoader(MainApplication.class.getResource("about-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UTILITY);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
+
+    public void inpoh(ActionEvent actionEvent) {
+        Alert alertI = new Alert(Alert.AlertType.INFORMATION, "Agenda 1.0.1 Version 0.0.1 ", ButtonType.OK);
+        alertI.setTitle("Version Info");
+        alertI.setHeaderText("Agenda 1.0.1 Application");
+        alertI.showAndWait();
+    }
 }

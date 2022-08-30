@@ -123,11 +123,10 @@
                         <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Report">
+                <Menu mnemonicParsing="false" text="About">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Event Report" />
-                        <MenuItem mnemonicParsing="false" text="Reminder Report" />
-                        <MenuItem mnemonicParsing="false" text="Task Report" />
+                    <MenuItem fx:id="itmAbout" mnemonicParsing="false" onAction="#tentang" text="About Us" />
+                        <MenuItem fx:id="itmInfo" mnemonicParsing="false" onAction="#inpoh" text="Info" />
                   </items>
                 </Menu>
               </menus>

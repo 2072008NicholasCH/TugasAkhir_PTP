@@ -620,8 +620,8 @@ public class MainController {
         confirm.showAndWait();
         if (confirm.getResult() == ButtonType.OK) {
             date.getScene().getWindow().hide();
-            Path p = Paths.get("user/data.json");
-            Files.delete(p);
+//            Path p = Paths.get("user/data.json");
+//            Files.delete(p);
             fxmlLoader = new FXMLLoader(MainApplication.class.getResource("user-login.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             stage = new Stage();

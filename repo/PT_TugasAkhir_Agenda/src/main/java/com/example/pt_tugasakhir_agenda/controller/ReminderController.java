@@ -46,7 +46,7 @@ public class ReminderController {
     }
     public void addReminder() {
         if (txtReminderName.getText().isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill the event name field", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill the reminder name field", ButtonType.OK);
             alert.showAndWait();
         } else {
             String dateTime = dateReminder.getValue() + " " + timeReminder.getText();

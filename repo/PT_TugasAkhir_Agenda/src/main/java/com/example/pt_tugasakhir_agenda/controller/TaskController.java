@@ -58,7 +58,7 @@ public class TaskController {
         String dateTime = dateTask.getValue() + " " + timeTask.getText();
 
         if (txtTaskName.getText().isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill the event name field", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill the task name field", ButtonType.OK);
             alert.showAndWait();
         } else {
 

@@ -120,6 +120,7 @@ public class UserController {
         }
     }
     public String enkrip(String pass) {
+        // sumber: https://www.javatpoint.com/how-to-encrypt-password-in-java
         /* Plain-text password initialization. */
         String password = pass;
         String encryptedpassword = null;

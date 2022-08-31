@@ -47,16 +47,21 @@ public class CategoryController {
         }
     }
     public void addCategory() {
-        int res = cDao.addData(new Category(0, txtCategoryName.getText()));
-        Alert alert;
-        if (res > 0) {
-            alert = new Alert(Alert.AlertType.INFORMATION, "Category Added Successfully", ButtonType.OK);
+        if (txtCategoryName.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill the category name field", ButtonType.OK);
+            alert.showAndWait();
         } else {
-            alert = new Alert(Alert.AlertType.INFORMATION, "Error on add category", ButtonType.OK);
+            int res = cDao.addData(new Category(0, txtCategoryName.getText()));
+            Alert alert;
+            if (res > 0) {
+                alert = new Alert(Alert.AlertType.INFORMATION, "Category Added Successfully", ButtonType.OK);
+            } else {
+                alert = new Alert(Alert.AlertType.INFORMATION, "Error on add category", ButtonType.OK);
+            }
+            alert.showAndWait();
+            getData();
+            reset();
         }
-        alert.showAndWait();
-        getData();
-        reset();
     }
     public void updateCategory() {
         int res = cDao.updateData(new Category(tbCategory.getSelectionModel().getSelectedItem().getIdcategory(), txtCategoryName.getText()));

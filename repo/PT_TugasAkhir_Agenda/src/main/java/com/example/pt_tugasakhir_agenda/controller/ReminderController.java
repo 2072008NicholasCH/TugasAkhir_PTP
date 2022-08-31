@@ -45,18 +45,23 @@ public class ReminderController {
         }
     }
     public void addReminder() {
-        String dateTime = dateReminder.getValue() + " " + timeReminder.getText();
-
-        User u = new User(user.getUsername(), user.getPassword(), user.getName());
-        Reminder r = new Reminder(0, txtReminderName.getText(), dateTime, u);
-        int res = rDao.addData(r);
-        if (res > 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Reminder added successfully", ButtonType.OK);
+        if (txtReminderName.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill the event name field", ButtonType.OK);
             alert.showAndWait();
-            txtReminderName.getScene().getWindow().hide();
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Error on add reminder", ButtonType.OK);
-            alert.showAndWait();
+            String dateTime = dateReminder.getValue() + " " + timeReminder.getText();
+
+            User u = new User(user.getUsername(), user.getPassword(), user.getName());
+            Reminder r = new Reminder(0, txtReminderName.getText(), dateTime, u);
+            int res = rDao.addData(r);
+            if (res > 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Reminder added successfully", ButtonType.OK);
+                alert.showAndWait();
+                txtReminderName.getScene().getWindow().hide();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error on add reminder", ButtonType.OK);
+                alert.showAndWait();
+            }
         }
     }
     public void updateReminder(Reminder reminder) {

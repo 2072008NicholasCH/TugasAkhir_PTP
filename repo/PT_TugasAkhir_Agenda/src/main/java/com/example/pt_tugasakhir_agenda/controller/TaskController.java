@@ -57,16 +57,22 @@ public class TaskController {
     public void addTask() {
         String dateTime = dateTask.getValue() + " " + timeTask.getText();
 
-        User u = new User(user.getUsername(), user.getPassword(), user.getName());
-        Task t = new Task(0, txtTaskName.getText(), dateTime, cbCategory.getSelectionModel().getSelectedItem(), u);
-        int res = tDao.addData(t);
-        if (res > 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Task added successfully", ButtonType.OK);
+        if (txtTaskName.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill the event name field", ButtonType.OK);
             alert.showAndWait();
-            txtTaskName.getScene().getWindow().hide();
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Error on add task", ButtonType.OK);
-            alert.showAndWait();
+
+            User u = new User(user.getUsername(), user.getPassword(), user.getName());
+            Task t = new Task(0, txtTaskName.getText(), dateTime, cbCategory.getSelectionModel().getSelectedItem(), u);
+            int res = tDao.addData(t);
+            if (res > 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Task added successfully", ButtonType.OK);
+                alert.showAndWait();
+                txtTaskName.getScene().getWindow().hide();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error on add task", ButtonType.OK);
+                alert.showAndWait();
+            }
         }
     }
     public void updateTask(Task task) {
